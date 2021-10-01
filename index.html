@@ -360,10 +360,43 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          Bayesian
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Bayesian" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Bayesian
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="api/bayesian/" class="md-nav__link">
-        Bayesian
+      <a href="api/bayesian/algorithms/" class="md-nav__link">
+        algorithms
       </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -413,7 +446,7 @@
                 
                 
                 <div align="center">
-  <img src="assets/Xopt-logo.png">
+  <img src="assets/Xopt-logo.png", width="200">
 </div>
 
 <h1 id="xopt">Xopt</h1>
@@ -422,45 +455,57 @@
 simulations/control systems with minimal required coding. Users can easily connect 
 arbitrary evaluation functions to advanced algorithms with minimal coding with 
 support for multi-threaded or MPI-enabled execution.</p>
-<p>Currenty Xopt provides the following optimization algorithms:
-- random sampling
-- cnsga
-- Single objective Bayesian optimization (w/ or w/o constraints, serial or parallel)
-- Multi-objective Bayesian optimization (w/ or w/o constraints, serial or parallel)
-- Bayesian exploration
-- Multi-fidelity Single objective Bayesian optimization </p>
+<p>Currenty <strong>Xopt</strong> provides:</p>
+<ul>
+<li>optimization algorithms:</li>
+<li><code>cnsga</code> Continuous NSGA-II with constraints.</li>
+<li><code>bayesian_optimization</code> Single objective Bayesian optimization (w/ or w/o constraints, serial or parallel).</li>
+<li><code>mobo</code> Multi-objective Bayesian optimization (w/ or w/o constraints, serial or parallel).</li>
+<li><code>bayesian_exploration</code> Bayesian exploration.</li>
+<li><code>multi_fidelity</code> Multi-fidelity Single objective Bayesian optimization.</li>
+<li>sampling algorithms:</li>
+<li><code>random sampler</code></li>
+<li>Convenient YAML/JSON based input format.</li>
+<li>Driver programs:</li>
+<li><code>xopt.mpi.run</code> Parallel MPI execution using this input format.</li>
+</ul>
+<p><strong>Xopt</strong> does <strong>not</strong> provide: 
+- your custom simulation via an <code>evaluate</code> function.</p>
+<p>Rather, <strong>Xopt</strong> asks you to define this function </p>
 <h1 id="configuring-an-xopt-run">Configuring an Xopt run</h1>
 <p>Xopt runs are specified via a dictionary that can be directly imported from a YAML file.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">xopt</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt">output_path</span><span class="p">:</span> <span class="nv">null</span><span class="p p-Indicator">,</span><span class="nt"> verbose</span><span class="p">:</span> <span class="nv">true</span><span class="p p-Indicator">,</span><span class="nt"> algorithm</span><span class="p">:</span> <span class="nv">cnsga</span><span class="p p-Indicator">}</span>
+<div class="highlight"><pre><span></span><code><span class="nt">xopt</span><span class="p">:</span> 
+  <span class="nt">output_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">null</span>
 
 <span class="nt">algorithm</span><span class="p">:</span>
   <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cnsga</span>
-  <span class="nt">options</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt">max_generations</span><span class="p">:</span> <span class="nv">50</span><span class="p p-Indicator">,</span> 
-<span class="nt">            population_size</span><span class="p">:</span> <span class="nv">128</span><span class="p p-Indicator">,</span> 
-<span class="nt">            crossover_probability</span><span class="p">:</span> <span class="nv">0.9</span><span class="p p-Indicator">,</span> 
-<span class="nt">            mutation_probability</span><span class="p">:</span> <span class="nv">1.0</span><span class="p p-Indicator">,</span>
-<span class="nt">            selection</span><span class="p">:</span> <span class="nv">auto</span><span class="p p-Indicator">,</span> 
-<span class="nt">            verbose</span><span class="p">:</span> <span class="nv">true</span><span class="p p-Indicator">,</span> 
-<span class="nt">            population</span><span class="p">:</span> <span class="nv">null</span><span class="p p-Indicator">}</span>
+  <span class="nt">options</span><span class="p">:</span> 
+    <span class="nt">max_generations</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">50</span> 
+    <span class="nt">population_size</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">128</span>
+    <span class="nt">crossover_probability</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.9</span>
+    <span class="nt">mutation_probability</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
+    <span class="nt">selection</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">auto</span>
+    <span class="nt">verbose</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+    <span class="nt">population</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">null</span>
 
 <span class="nt">simulation</span><span class="p">:</span> 
   <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">test_TNK</span>
-  <span class="nt">evaluate</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">xopt.evaluators.test_TNK.evaluate_TNK</span>  
+  <span class="nt">evaluate</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">xopt.tests.evaluators.TNK.evaluate_TNK</span>  
 
 <span class="nt">vocs</span><span class="p">:</span>
-  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">TNK_test</span>
-  <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">null</span>
-  <span class="nt">simulation</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">test_TNK</span>
-  <span class="nt">templates</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">null</span>
-  <span class="nt">variables</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt">x1</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span> <span class="nv">3.14159</span><span class="p p-Indicator">]</span>
-<span class="nt">              x2</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span> <span class="nv">3.14159</span><span class="p p-Indicator">]}</span>
-  <span class="nt">objectives</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt">y1</span><span class="p">:</span> <span class="nv">MINIMIZE</span><span class="p p-Indicator">,</span> 
-<span class="nt">               y2</span><span class="p">:</span> <span class="nv">MINIMIZE</span><span class="p p-Indicator">}</span>
+  <span class="nt">variables</span><span class="p">:</span> 
+    <span class="nt">x1</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span> <span class="nv">3.14159</span><span class="p p-Indicator">]</span>
+    <span class="nt">x2</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span> <span class="nv">3.14159</span><span class="p p-Indicator">]</span>
+  <span class="nt">objectives</span><span class="p">:</span>
+    <span class="nt">y1</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MINIMIZE</span> 
+    <span class="nt">y2</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MINIMIZE</span>
   <span class="nt">constraints</span><span class="p">:</span>
     <span class="nt">c1</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">GREATER_THAN</span><span class="p p-Indicator">,</span> <span class="nv">0</span><span class="p p-Indicator">]</span>
     <span class="nt">c2</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">LESS_THAN</span><span class="p p-Indicator">,</span> <span class="nv">0.5</span><span class="p p-Indicator">]</span>
-  <span class="nt">linked_variables</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt">x9</span><span class="p">:</span> <span class="nv">x1</span><span class="p p-Indicator">}</span>
-  <span class="nt">constants</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt">a</span><span class="p">:</span> <span class="nv">dummy_constant</span><span class="p p-Indicator">}</span>
+  <span class="nt">linked_variables</span><span class="p">:</span>
+    <span class="nt">x9</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">x1</span>
+  <span class="nt">constants</span><span class="p">:</span>
+    <span class="nt">a</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dummy_constant</span>
 </code></pre></div>
 <h1 id="defining-evaluation-function">Defining evaluation function</h1>
 <p>Xopt can interface with arbitrary evaluate functions (defined in Python) with the 
@@ -489,7 +534,7 @@ used in the evaluate function but are not modified by xopt.</p>
 </code></pre></div>
 <h1 id="developers">Developers</h1>
 <p>Install dependencies:
-<code>conda install numpy pyyaml deap mpi4py</code></p>
+<code>conda install numpy pyyaml deap mpi4py torch botorch gpytorch pandas ipywidgets tqdm</code></p>
 <p>Clone this repository:
 <code>git clone https://github.com/ChristopherMayes/xopt.git</code></p>
 <p>Install as editable:
