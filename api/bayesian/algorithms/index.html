@@ -10,7 +10,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.0">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.1">
     
     
       
@@ -18,7 +18,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.8b42a75e.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.1c75ef36.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
@@ -710,54 +710,55 @@
                          <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                          <span class="n">generator_options</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Bayesian Exploration</span>
+<span class="sd">    Bayesian Exploration</span>
 
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        vocs : dict</span>
-<span class="sd">            Varabiles, objectives, constraints and statics dictionary, see xopt documentation for detials</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    vocs : dict</span>
+<span class="sd">        Varabiles, objectives, constraints and statics dictionary, see xopt documentation for detials</span>
 
-<span class="sd">        evaluate_f : callable</span>
-<span class="sd">            Returns dict of outputs after problem has been evaluated</span>
+<span class="sd">    evaluate_f : callable</span>
+<span class="sd">        Returns dict of outputs after problem has been evaluated</span>
 
-<span class="sd">        n_steps : int, default = 1</span>
-<span class="sd">            Number of optimization steps to execute</span>
+<span class="sd">    n_steps : int, default = 1</span>
+<span class="sd">        Number of optimization steps to execute</span>
 
-<span class="sd">        n_initial_samples : int, defualt = 1</span>
-<span class="sd">            Number of initial samples to take before using the model, overwritten by initial_x</span>
+<span class="sd">    n_initial_samples : int, defualt = 1</span>
+<span class="sd">        Number of initial samples to take before using the model, overwritten by initial_x</span>
 
-<span class="sd">        output_path : str, default = &#39;&#39;</span>
-<span class="sd">            Path location to place outputs</span>
+<span class="sd">    output_path : str, default = &#39;&#39;</span>
+<span class="sd">        Path location to place outputs</span>
 
-<span class="sd">        custom_model : callable, optional</span>
-<span class="sd">            Function of the form f(train_inputs, train_outputs) that returns a trained custom model</span>
+<span class="sd">    custom_model : callable, optional</span>
+<span class="sd">        Function of the form f(train_inputs, train_outputs) that returns a trained custom model</span>
 
-<span class="sd">        executor : Executor, optional</span>
-<span class="sd">            Executor object to run evaluate_f</span>
+<span class="sd">    executor : Executor, optional</span>
+<span class="sd">        Executor object to run evaluate_f</span>
 
-<span class="sd">        restart_file : str, optional</span>
-<span class="sd">            File location of JSON file that has previous data</span>
+<span class="sd">    restart_file : str, optional</span>
+<span class="sd">        File location of JSON file that has previous data</span>
 
-<span class="sd">        initial_x : list, optional</span>
-<span class="sd">            Nested list to provide initial candiates to evaluate, overwrites n_initial_samples</span>
+<span class="sd">    initial_x : list, optional</span>
+<span class="sd">        Nested list to provide initial candiates to evaluate, overwrites n_initial_samples</span>
 
-<span class="sd">        verbose : bool, defualt = True</span>
-<span class="sd">            Print out messages during optimization</span>
+<span class="sd">    verbose : bool, defualt = True</span>
+<span class="sd">        Print out messages during optimization</span>
 
-<span class="sd">        use_gpu : bool, default = False</span>
-<span class="sd">            Specify if GPU should be used if available</span>
+<span class="sd">    use_gpu : bool, default = False</span>
+<span class="sd">        Specify if GPU should be used if available</span>
 
-<span class="sd">        generator_options : dict</span>
-<span class="sd">            Dictionary of options for MOBO</span>
+<span class="sd">    generator_options : dict</span>
+<span class="sd">        Dictionary of options for MOBO</span>
 
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        results : dict</span>
-<span class="sd">            Dictionary with output data at the end of optimization</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    results : dict</span>
+<span class="sd">        Dictionary with output data at the end of optimization</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">generator_options</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">generator_options</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Handle None</span>
+    <span class="n">generator_options</span> <span class="o">=</span> <span class="n">generator_options</span> <span class="ow">or</span> <span class="p">{}</span>
 
     <span class="n">generator</span> <span class="o">=</span> <span class="n">generators</span><span class="o">.</span><span class="n">exploration</span><span class="o">.</span><span class="n">BayesianExplorationGenerator</span><span class="p">(</span><span class="n">vocs</span><span class="p">,</span>
                                                                     <span class="o">**</span><span class="n">generator_options</span><span class="p">)</span>
@@ -906,56 +907,59 @@ returns a trained custom model</p></td>
                       <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                       <span class="n">generator_options</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">       Multi-objective Bayesian optimization</span>
+<span class="sd">    Multi-objective Bayesian optimization</span>
 
-<span class="sd">       Parameters</span>
-<span class="sd">       ----------</span>
-<span class="sd">       vocs : dict</span>
-<span class="sd">           Varabiles, objectives, constraints and statics dictionary,</span>
-<span class="sd">           see xopt documentation for detials</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    vocs : dict</span>
+<span class="sd">        Varabiles, objectives, constraints and statics dictionary,</span>
+<span class="sd">        see xopt documentation for detials</span>
 
-<span class="sd">       evaluate_f : callable</span>
-<span class="sd">           Returns dict of outputs after problem has been evaluated</span>
+<span class="sd">    evaluate_f : callable</span>
+<span class="sd">        Returns dict of outputs after problem has been evaluated</span>
 
-<span class="sd">       n_steps : int, default = 1</span>
-<span class="sd">           Number of optimization steps to execute</span>
+<span class="sd">    n_steps : int, default = 1</span>
+<span class="sd">        Number of optimization steps to execute</span>
 
-<span class="sd">       n_initial_samples : int, defualt = 1</span>
-<span class="sd">           Number of initial samples to take before using the model,</span>
-<span class="sd">           overwritten by initial_x</span>
+<span class="sd">    n_initial_samples : int, defualt = 1</span>
+<span class="sd">        Number of initial samples to take before using the model,</span>
+<span class="sd">        overwritten by initial_x</span>
 
-<span class="sd">       output_path : str, default = &#39;&#39;</span>
-<span class="sd">           Path location to place outputs</span>
+<span class="sd">    output_path : str, default = &#39;&#39;</span>
+<span class="sd">        Path location to place outputs</span>
 
-<span class="sd">       custom_model : callable, optional</span>
-<span class="sd">           Function of the form f(train_inputs, train_outputs) that</span>
-<span class="sd">           returns a trained custom model</span>
+<span class="sd">    custom_model : callable, optional</span>
+<span class="sd">        Function of the form f(train_inputs, train_outputs) that</span>
+<span class="sd">        returns a trained custom model</span>
 
-<span class="sd">       executor : Executor, optional</span>
-<span class="sd">           Executor object to run evaluate_f</span>
+<span class="sd">    executor : Executor, optional</span>
+<span class="sd">        Executor object to run evaluate_f</span>
 
-<span class="sd">       restart_file : str, optional</span>
-<span class="sd">           File location of JSON file that has previous data</span>
+<span class="sd">    restart_file : str, optional</span>
+<span class="sd">        File location of JSON file that has previous data</span>
 
-<span class="sd">       initial_x : list, optional</span>
-<span class="sd">           Nested list to provide initial candiates to evaluate, overwrites n_initial_samples</span>
+<span class="sd">    initial_x : list, optional</span>
+<span class="sd">        Nested list to provide initial candiates to evaluate, overwrites n_initial_samples</span>
 
-<span class="sd">       verbose : bool, defualt = True</span>
-<span class="sd">           Print out messages during optimization</span>
+<span class="sd">    verbose : bool, defualt = True</span>
+<span class="sd">        Print out messages during optimization</span>
 
-<span class="sd">       generator_options : dict</span>
-<span class="sd">           Dictionary of options for MOBO</span>
+<span class="sd">    generator_options : dict</span>
+<span class="sd">        Dictionary of options for MOBO</span>
 
-<span class="sd">       Returns</span>
-<span class="sd">       -------</span>
-<span class="sd">       results : dict</span>
-<span class="sd">           Dictionary with output data at the end of optimization</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    results : dict</span>
+<span class="sd">        Dictionary with output data at the end of optimization</span>
 
-<span class="sd">       &quot;&quot;&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">assert</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">generator_options</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">and</span>
-            <span class="s1">&#39;acquisition_function&#39;</span> <span class="ow">in</span> <span class="n">generator_options</span><span class="p">)</span>
-    <span class="n">acq_func</span> <span class="o">=</span> <span class="n">generator_options</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;acquisition_function&#39;</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Required</span>
+        <span class="n">acq_func</span> <span class="o">=</span> <span class="n">get_function</span><span class="p">(</span><span class="n">generator_options</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;acquisition_function&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;acquisition_function is a required parameter of generator_options.&#39;</span><span class="p">)</span>
+
     <span class="n">generator</span> <span class="o">=</span> <span class="n">generators</span><span class="o">.</span><span class="n">generator</span><span class="o">.</span><span class="n">BayesianGenerator</span><span class="p">(</span><span class="n">vocs</span><span class="p">,</span>
                                                        <span class="n">acq_func</span><span class="p">,</span>
                                                        <span class="o">**</span><span class="n">generator_options</span><span class="p">)</span>
@@ -1071,7 +1075,7 @@ overwrites n_initial_samples</p></td>
       </tr>
       <tr>
         <td><code>verbose</code></td>
-        <td><code>bool, defualt = True</code></td>
+        <td><code>bool, default = True</code></td>
         <td><p>Print out messages during optimization</p></td>
         <td><code>True</code></td>
       </tr>
@@ -1150,7 +1154,7 @@ overwrites n_initial_samples</p></td>
 <span class="sd">        Nested list to provide initial candiates to evaluate,</span>
 <span class="sd">        overwrites n_initial_samples</span>
 
-<span class="sd">    verbose : bool, defualt = True</span>
+<span class="sd">    verbose : bool, default = True</span>
 <span class="sd">        Print out messages during optimization</span>
 
 <span class="sd">    generator_options : dict</span>
@@ -1163,8 +1167,8 @@ overwrites n_initial_samples</p></td>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">if</span> <span class="n">generator_options</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">generator_options</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="c1"># Handle None</span>
+    <span class="n">generator_options</span> <span class="o">=</span> <span class="n">generator_options</span> <span class="ow">or</span> <span class="p">{}</span>
 
     <span class="n">generator</span> <span class="o">=</span> <span class="n">generators</span><span class="o">.</span><span class="n">mobo</span><span class="o">.</span><span class="n">MOBOGenerator</span><span class="p">(</span><span class="n">vocs</span><span class="p">,</span> <span class="n">ref</span><span class="p">,</span> <span class="o">**</span><span class="n">generator_options</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">optimize</span><span class="p">(</span><span class="n">vocs</span><span class="p">,</span>
@@ -1193,7 +1197,7 @@ overwrites n_initial_samples</p></td>
 
 
 <h3 class="doc doc-heading" id="xopt.bayesian.algorithms.multi_fidelity_optimize">
-<code class="highlight language-python"><span class="n">multi_fidelity_optimize</span><span class="p">(</span><span class="n">vocs</span><span class="p">,</span> <span class="n">evaluate_f</span><span class="p">,</span> <span class="n">budget</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">base_cost</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">output_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">custom_model</span><span class="o">=&lt;</span><span class="n">function</span> <span class="n">create_multi_fidelity_model</span> <span class="n">at</span> <span class="mh">0x7f99074b5b00</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">executor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">restart_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">initial_x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">generator_options</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">multi_fidelity_optimize</span><span class="p">(</span><span class="n">vocs</span><span class="p">,</span> <span class="n">evaluate_f</span><span class="p">,</span> <span class="n">budget</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">base_cost</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">output_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">custom_model</span><span class="o">=&lt;</span><span class="n">function</span> <span class="n">create_multi_fidelity_model</span> <span class="n">at</span> <span class="mh">0x7f96b90ee830</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">executor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">restart_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">initial_x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">generator_options</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 
 </h3>
@@ -1270,7 +1274,7 @@ at each step.</p></td>
         <td><code>callable</code></td>
         <td><p>Function of the form f(train_inputs, train_outputs) that returns a trained
 custom model</p></td>
-        <td><code>&lt;function create_multi_fidelity_model at 0x7f99074b5b00&gt;</code></td>
+        <td><code>&lt;function create_multi_fidelity_model at 0x7f96b90ee830&gt;</code></td>
       </tr>
       <tr>
         <td><code>executor</code></td>
@@ -1333,74 +1337,76 @@ custom model</p></td>
                             <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                             <span class="n">generator_options</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Multi-fidelity optimization using Bayesian optimization</span>
+<span class="sd">    Multi-fidelity optimization using Bayesian optimization</span>
 
-<span class="sd">        This optimization algorithm attempts to reduce the computational cost of</span>
-<span class="sd">        optimizing a scalar function through the use of many low-cost approximate</span>
-<span class="sd">        evaluations. We create a GP model that models the function f(x,c) where x</span>
-<span class="sd">        represents free parameters and c in the range [0,1] reperestents the `cost`.</span>
-<span class="sd">        This algorithm uses the knoweldge gradient approach</span>
-<span class="sd">        (https://botorch.org/tutorials/multi_fidelity_bo) to choose points that are</span>
-<span class="sd">        likely to provide the most information about the optimimum point at maximum</span>
-<span class="sd">        fidelity (c=1).</span>
+<span class="sd">    This optimization algorithm attempts to reduce the computational cost of</span>
+<span class="sd">    optimizing a scalar function through the use of many low-cost approximate</span>
+<span class="sd">    evaluations. We create a GP model that models the function f(x,c) where x</span>
+<span class="sd">    represents free parameters and c in the range [0,1] reperestents the `cost`.</span>
+<span class="sd">    This algorithm uses the knoweldge gradient approach</span>
+<span class="sd">    (https://botorch.org/tutorials/multi_fidelity_bo) to choose points that are</span>
+<span class="sd">    likely to provide the most information about the optimimum point at maximum</span>
+<span class="sd">    fidelity (c=1).</span>
 
-<span class="sd">        Since evaluations have variable cost, we specify a maximum `budget` that</span>
-<span class="sd">        stops the algorithm when the total cost exceeds the budget. Cost for a single</span>
-<span class="sd">        evaluation is given by `cost` + &#39;base_cost`.</span>
+<span class="sd">    Since evaluations have variable cost, we specify a maximum `budget` that</span>
+<span class="sd">    stops the algorithm when the total cost exceeds the budget. Cost for a single</span>
+<span class="sd">    evaluation is given by `cost` + &#39;base_cost`.</span>
 
-<span class="sd">        This algoritm is most efficient when used with a parallel executor,</span>
-<span class="sd">        as evaluations will be done asynchronously, allowing multiple cheap</span>
-<span class="sd">        simulations to run in parallel with expensive ones.</span>
+<span class="sd">    This algoritm is most efficient when used with a parallel executor,</span>
+<span class="sd">    as evaluations will be done asynchronously, allowing multiple cheap</span>
+<span class="sd">    simulations to run in parallel with expensive ones.</span>
 
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        vocs : dict</span>
-<span class="sd">            Varabiles, objectives, constraints and statics dictionary, see xopt</span>
-<span class="sd">            documentation for detials</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    vocs : dict</span>
+<span class="sd">        Varabiles, objectives, constraints and statics dictionary, see xopt</span>
+<span class="sd">        documentation for detials</span>
 
-<span class="sd">        evaluate_f : callable</span>
-<span class="sd">            Returns dict of outputs after problem has been evaluated</span>
+<span class="sd">    evaluate_f : callable</span>
+<span class="sd">        Returns dict of outputs after problem has been evaluated</span>
 
-<span class="sd">        budget : int, default = 1</span>
-<span class="sd">            Optimization budget</span>
+<span class="sd">    budget : int, default = 1</span>
+<span class="sd">        Optimization budget</span>
 
-<span class="sd">        processes : int, defualt = 1</span>
-<span class="sd">            Number of parallel processes to use or number of candidates to generate</span>
-<span class="sd">            at each step.</span>
+<span class="sd">    processes : int, defualt = 1</span>
+<span class="sd">        Number of parallel processes to use or number of candidates to generate</span>
+<span class="sd">        at each step.</span>
 
-<span class="sd">        base_cost : float, defualt = 1.0</span>
-<span class="sd">            Base cost of running simulations. Total cost is base + `cost` variable</span>
+<span class="sd">    base_cost : float, defualt = 1.0</span>
+<span class="sd">        Base cost of running simulations. Total cost is base + `cost` variable</span>
 
-<span class="sd">        output_path : str, default = &#39;&#39;</span>
-<span class="sd">            Path location to place outputs</span>
+<span class="sd">    output_path : str, default = &#39;&#39;</span>
+<span class="sd">        Path location to place outputs</span>
 
-<span class="sd">        custom_model : callable, optional</span>
-<span class="sd">            Function of the form f(train_inputs, train_outputs) that returns a trained</span>
-<span class="sd">            custom model</span>
+<span class="sd">    custom_model : callable, optional</span>
+<span class="sd">        Function of the form f(train_inputs, train_outputs) that returns a trained</span>
+<span class="sd">        custom model</span>
 
-<span class="sd">        executor : Executor, optional</span>
-<span class="sd">            Executor object to run evaluate_f</span>
+<span class="sd">    executor : Executor, optional</span>
+<span class="sd">        Executor object to run evaluate_f</span>
 
-<span class="sd">        restart_file : str, optional</span>
-<span class="sd">            File location of JSON file that has previous data</span>
+<span class="sd">    restart_file : str, optional</span>
+<span class="sd">        File location of JSON file that has previous data</span>
 
-<span class="sd">        initial_x : list, optional</span>
-<span class="sd">            Nested list to provide initial candiates to evaluate, overwrites n_initial_samples</span>
+<span class="sd">    initial_x : list, optional</span>
+<span class="sd">        Nested list to provide initial candiates to evaluate, overwrites n_initial_samples</span>
 
-<span class="sd">        verbose : bool, defualt = True</span>
-<span class="sd">            Print out messages during optimization</span>
+<span class="sd">    verbose : bool, defualt = True</span>
+<span class="sd">        Print out messages during optimization</span>
 
-<span class="sd">        generator_options : dict</span>
-<span class="sd">            Dictionary of options for MOBO</span>
+<span class="sd">    generator_options : dict</span>
+<span class="sd">        Dictionary of options for MOBO</span>
 
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        results : dict</span>
-<span class="sd">            Dictionary with output data at the end of optimization</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    results : dict</span>
+<span class="sd">        Dictionary with output data at the end of optimization</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">generator_options</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">generator_options</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+
+    <span class="c1"># Handle None</span>
+    <span class="n">generator_options</span> <span class="o">=</span> <span class="n">generator_options</span> <span class="ow">or</span> <span class="p">{}</span>
 
     <span class="n">generator_options</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;fixed_cost&#39;</span><span class="p">:</span> <span class="n">base_cost</span><span class="p">})</span>
     <span class="n">generator</span> <span class="o">=</span> <span class="n">generators</span><span class="o">.</span><span class="n">multi_fidelity</span><span class="o">.</span><span class="n">MultiFidelityGenerator</span><span class="p">(</span><span class="n">vocs</span><span class="p">,</span>
@@ -1503,10 +1509,10 @@ custom model</p></td>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.f8263e09.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.e99e714c.min.js", "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.4fc53ad4.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.c7d1b464.min.js"></script>
       
     
   </body>
