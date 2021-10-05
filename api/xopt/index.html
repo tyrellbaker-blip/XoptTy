@@ -761,10 +761,6 @@ vocs, which contains the simulation name, and templates</p>
 <span class="sd">    vocs, which contains the simulation name, and templates</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># make sure configure has the required keys</span>
-    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">configure</span><span class="o">.</span><span class="n">ALL_DEFAULTS</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Key </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> is required in config for Xopt&#39;</span><span class="p">)</span>
 
     <span class="bp">self</span><span class="o">.</span><span class="n">configure_xopt</span><span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">configure_algorithm</span><span class="p">()</span>
