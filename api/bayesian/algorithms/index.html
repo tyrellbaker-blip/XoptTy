@@ -414,6 +414,40 @@
     algorithms
   </a>
   
+    <nav class="md-nav" aria-label="algorithms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xopt.bayesian.algorithms.bayesian_exploration" class="md-nav__link">
+    bayesian_exploration()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xopt.bayesian.algorithms.bayesian_optimize" class="md-nav__link">
+    bayesian_optimize()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xopt.bayesian.algorithms.mobo" class="md-nav__link">
+    mobo()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xopt.bayesian.algorithms.multi_fidelity_optimize" class="md-nav__link">
+    multi_fidelity_optimize()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -466,6 +500,40 @@
     algorithms
   </a>
   
+    <nav class="md-nav" aria-label="algorithms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xopt.bayesian.algorithms.bayesian_exploration" class="md-nav__link">
+    bayesian_exploration()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xopt.bayesian.algorithms.bayesian_optimize" class="md-nav__link">
+    bayesian_optimize()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xopt.bayesian.algorithms.mobo" class="md-nav__link">
+    mobo()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xopt.bayesian.algorithms.multi_fidelity_optimize" class="md-nav__link">
+    multi_fidelity_optimize()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -516,7 +584,565 @@
 
 
 
+  <div class="doc doc-object doc-function">
 
+
+
+<h3 class="doc doc-heading" id="xopt.bayesian.algorithms.bayesian_exploration">
+<code class="highlight language-python"><span class="n">bayesian_exploration</span><span class="p">(</span><span class="n">vocs</span><span class="p">,</span> <span class="n">evaluate_f</span><span class="p">,</span> <span class="n">n_steps</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_initial_samples</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Bayesian Exploration</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>vocs</code></td>
+        <td><code>dict</code></td>
+        <td><p>Varabiles, objectives, constraints and statics dictionary, see xopt documentation for detials</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>evaluate_f</code></td>
+        <td><code>callable</code></td>
+        <td><p>Returns dict of outputs after problem has been evaluated</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>n_steps</code></td>
+        <td><code>int, default = 1</code></td>
+        <td><p>Number of optimization steps to execute</p></td>
+        <td><code>1</code></td>
+      </tr>
+      <tr>
+        <td><code>n_initial_samples</code></td>
+        <td><code>int, defualt = 1</code></td>
+        <td><p>Number of initial samples to take before using the model, overwritten by initial_x</p></td>
+        <td><code>1</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>dict</code></td>
+      <td><p>Dictionary with output data at the end of optimization</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>xopt/bayesian/algorithms.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bayesian_exploration</span><span class="p">(</span><span class="n">vocs</span><span class="p">,</span> <span class="n">evaluate_f</span><span class="p">,</span> <span class="n">n_steps</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_initial_samples</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Bayesian Exploration</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    vocs : dict</span>
+<span class="sd">        Varabiles, objectives, constraints and statics dictionary, see xopt documentation for detials</span>
+
+<span class="sd">    evaluate_f : callable</span>
+<span class="sd">        Returns dict of outputs after problem has been evaluated</span>
+
+<span class="sd">    n_steps : int, default = 1</span>
+<span class="sd">        Number of optimization steps to execute</span>
+
+<span class="sd">    n_initial_samples : int, defualt = 1</span>
+<span class="sd">        Number of initial samples to take before using the model, overwritten by initial_x</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    results : dict</span>
+<span class="sd">        Dictionary with output data at the end of optimization</span>
+
+<span class="sd">    Other Parameters</span>
+<span class="sd">    ----------------</span>
+<span class="sd">    **kwargs : `~xopt.bayesian.optimizer` properties</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">options</span> <span class="o">=</span> <span class="n">KWARG_DEFAULTS</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">options</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="n">generator_options</span> <span class="o">=</span> <span class="n">options</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;generator_options&quot;</span><span class="p">)</span>
+
+    <span class="n">generator</span> <span class="o">=</span> <span class="n">generators</span><span class="o">.</span><span class="n">exploration</span><span class="o">.</span><span class="n">BayesianExplorationGenerator</span><span class="p">(</span>
+        <span class="n">vocs</span><span class="p">,</span> <span class="o">**</span><span class="n">generator_options</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">optimize</span><span class="p">(</span>
+        <span class="n">vocs</span><span class="p">,</span>
+        <span class="n">evaluate_f</span><span class="p">,</span>
+        <span class="n">generator</span><span class="p">,</span>
+        <span class="n">n_steps</span><span class="o">=</span><span class="n">n_steps</span><span class="p">,</span>
+        <span class="n">n_initial_samples</span><span class="o">=</span><span class="n">n_initial_samples</span><span class="p">,</span>
+        <span class="n">tkwargs</span><span class="o">=</span><span class="n">generator</span><span class="o">.</span><span class="n">tkwargs</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">options</span><span class="p">,</span>
+    <span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 class="doc doc-heading" id="xopt.bayesian.algorithms.bayesian_optimize">
+<code class="highlight language-python"><span class="n">bayesian_optimize</span><span class="p">(</span><span class="n">vocs</span><span class="p">,</span> <span class="n">evaluate_f</span><span class="p">,</span> <span class="n">n_steps</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_initial_samples</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Bayesian optimization</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>vocs</code></td>
+        <td><code>dict</code></td>
+        <td><p>Varabiles, objectives, constraints and statics dictionary,
+see xopt documentation for detials</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>evaluate_f</code></td>
+        <td><code>callable</code></td>
+        <td><p>Returns dict of outputs after problem has been evaluated</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>n_steps</code></td>
+        <td><code>int, default = 1</code></td>
+        <td><p>Number of optimization steps to execute</p></td>
+        <td><code>1</code></td>
+      </tr>
+      <tr>
+        <td><code>n_initial_samples</code></td>
+        <td><code>int, defualt = 1</code></td>
+        <td><p>Number of initial samples to take before using the model,
+overwritten by initial_x</p></td>
+        <td><code>1</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>dict</code></td>
+      <td><p>Dictionary with output data at the end of optimization</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>xopt/bayesian/algorithms.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bayesian_optimize</span><span class="p">(</span><span class="n">vocs</span><span class="p">,</span> <span class="n">evaluate_f</span><span class="p">,</span> <span class="n">n_steps</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_initial_samples</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Bayesian optimization</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    vocs : dict</span>
+<span class="sd">        Varabiles, objectives, constraints and statics dictionary,</span>
+<span class="sd">        see xopt documentation for detials</span>
+
+<span class="sd">    evaluate_f : callable</span>
+<span class="sd">        Returns dict of outputs after problem has been evaluated</span>
+
+<span class="sd">    n_steps : int, default = 1</span>
+<span class="sd">        Number of optimization steps to execute</span>
+
+<span class="sd">    n_initial_samples : int, defualt = 1</span>
+<span class="sd">        Number of initial samples to take before using the model,</span>
+<span class="sd">        overwritten by initial_x</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    results : dict</span>
+<span class="sd">        Dictionary with output data at the end of optimization</span>
+
+<span class="sd">    Other Parameters</span>
+<span class="sd">    ----------------</span>
+<span class="sd">    **kwargs : `~xopt.bayesian.optimizer` properties</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">options</span> <span class="o">=</span> <span class="n">KWARG_DEFAULTS</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">options</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="n">generator_options</span> <span class="o">=</span> <span class="n">options</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;generator_options&quot;</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Required</span>
+        <span class="n">acq_func</span> <span class="o">=</span> <span class="n">get_function</span><span class="p">(</span><span class="n">generator_options</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;acquisition_function&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;acquisition_function is a required parameter of generator_options.&quot;</span>
+        <span class="p">)</span>
+
+    <span class="n">generator</span> <span class="o">=</span> <span class="n">generators</span><span class="o">.</span><span class="n">generator</span><span class="o">.</span><span class="n">BayesianGenerator</span><span class="p">(</span>
+        <span class="n">vocs</span><span class="p">,</span> <span class="n">acq_func</span><span class="p">,</span> <span class="o">**</span><span class="n">generator_options</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">optimize</span><span class="p">(</span>
+        <span class="n">vocs</span><span class="p">,</span>
+        <span class="n">evaluate_f</span><span class="p">,</span>
+        <span class="n">generator</span><span class="p">,</span>
+        <span class="n">n_steps</span><span class="p">,</span>
+        <span class="n">n_initial_samples</span><span class="p">,</span>
+        <span class="n">tkwargs</span><span class="o">=</span><span class="n">generator</span><span class="o">.</span><span class="n">tkwargs</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">options</span><span class="p">,</span>
+    <span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 class="doc doc-heading" id="xopt.bayesian.algorithms.mobo">
+<code class="highlight language-python"><span class="n">mobo</span><span class="p">(</span><span class="n">vocs</span><span class="p">,</span> <span class="n">evaluate_f</span><span class="p">,</span> <span class="n">ref</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_steps</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_initial_samples</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Multi-objective Bayesian optimization</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>vocs</code></td>
+        <td><code>dict</code></td>
+        <td><p>Varabiles, objectives, constraints and statics dictionary,
+see xopt documentation for detials</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>evaluate_f</code></td>
+        <td><code>callable</code></td>
+        <td><p>Returns dict of outputs after problem has been evaluated</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>ref</code></td>
+        <td><code>list</code></td>
+        <td><p>Reference point for multi-objective optimization.</p></td>
+        <td><code>None</code></td>
+      </tr>
+      <tr>
+        <td><code>n_steps</code></td>
+        <td><code>int, default = 1</code></td>
+        <td><p>Number of optimization steps to execute</p></td>
+        <td><code>1</code></td>
+      </tr>
+      <tr>
+        <td><code>n_initial_samples</code></td>
+        <td><code>int, defualt = 1</code></td>
+        <td><p>Number of initial samples to take before using the model,
+overwritten by initial_x</p></td>
+        <td><code>1</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>dict</code></td>
+      <td><p>Dictionary with output data at the end of optimization</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>xopt/bayesian/algorithms.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">mobo</span><span class="p">(</span><span class="n">vocs</span><span class="p">,</span> <span class="n">evaluate_f</span><span class="p">,</span> <span class="n">ref</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_steps</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_initial_samples</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Multi-objective Bayesian optimization</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    vocs : dict</span>
+<span class="sd">        Varabiles, objectives, constraints and statics dictionary,</span>
+<span class="sd">        see xopt documentation for detials</span>
+
+<span class="sd">    evaluate_f : callable</span>
+<span class="sd">        Returns dict of outputs after problem has been evaluated</span>
+
+<span class="sd">    ref : list</span>
+<span class="sd">        Reference point for multi-objective optimization.</span>
+
+<span class="sd">    n_steps : int, default = 1</span>
+<span class="sd">        Number of optimization steps to execute</span>
+
+<span class="sd">    n_initial_samples : int, defualt = 1</span>
+<span class="sd">        Number of initial samples to take before using the model,</span>
+<span class="sd">        overwritten by initial_x</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    results : dict</span>
+<span class="sd">        Dictionary with output data at the end of optimization</span>
+
+<span class="sd">    Other Parameters</span>
+<span class="sd">    ----------------</span>
+<span class="sd">    **kwargs : `~xopt.bayesian.optimizer` properties</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">options</span> <span class="o">=</span> <span class="n">KWARG_DEFAULTS</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">options</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="n">generator_options</span> <span class="o">=</span> <span class="n">options</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;generator_options&quot;</span><span class="p">)</span>
+
+    <span class="n">generator</span> <span class="o">=</span> <span class="n">generators</span><span class="o">.</span><span class="n">mobo</span><span class="o">.</span><span class="n">MOBOGenerator</span><span class="p">(</span><span class="n">vocs</span><span class="p">,</span> <span class="n">ref</span><span class="p">,</span> <span class="o">**</span><span class="n">generator_options</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">optimize</span><span class="p">(</span>
+        <span class="n">vocs</span><span class="p">,</span>
+        <span class="n">evaluate_f</span><span class="p">,</span>
+        <span class="n">generator</span><span class="p">,</span>
+        <span class="n">n_steps</span><span class="p">,</span>
+        <span class="n">n_initial_samples</span><span class="p">,</span>
+        <span class="n">tkwargs</span><span class="o">=</span><span class="n">generator</span><span class="o">.</span><span class="n">tkwargs</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">options</span><span class="p">,</span>
+    <span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 class="doc doc-heading" id="xopt.bayesian.algorithms.multi_fidelity_optimize">
+<code class="highlight language-python"><span class="n">multi_fidelity_optimize</span><span class="p">(</span><span class="n">vocs</span><span class="p">,</span> <span class="n">evaluate_f</span><span class="p">,</span> <span class="n">budget</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">base_cost</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Multi-fidelity optimization using Bayesian optimization</p>
+<p>This optimization algorithm attempts to reduce the computational cost of
+optimizing a scalar function through the use of many low-cost approximate
+evaluations. We create a GP model that models the function f(x,c) where x
+represents free parameters and c in the range [0,1] reperestents the <code>cost</code>.
+This algorithm uses the knoweldge gradient approach
+(https://botorch.org/tutorials/multi_fidelity_bo) to choose points that are
+likely to provide the most information about the optimimum point at maximum
+fidelity (c=1).</p>
+<p>Since evaluations have variable cost, we specify a maximum <code>budget</code> that
+stops the algorithm when the total cost exceeds the budget. Cost for a single
+evaluation is given by <code>cost</code> + 'base_cost`.</p>
+<p>This algoritm is most efficient when used with a parallel executor,
+as evaluations will be done asynchronously, allowing multiple cheap
+simulations to run in parallel with expensive ones.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>vocs</code></td>
+        <td><code>dict</code></td>
+        <td><p>Varabiles, objectives, constraints and statics dictionary, see xopt
+documentation for detials</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>evaluate_f</code></td>
+        <td><code>callable</code></td>
+        <td><p>Returns dict of outputs after problem has been evaluated</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>budget</code></td>
+        <td><code>int, default = 1</code></td>
+        <td><p>Optimization budget</p></td>
+        <td><code>1</code></td>
+      </tr>
+      <tr>
+        <td><code>processes</code></td>
+        <td><code>int, defualt = 1</code></td>
+        <td><p>Number of parallel processes to use or number of candidates to generate
+at each step.</p></td>
+        <td><code>1</code></td>
+      </tr>
+      <tr>
+        <td><code>base_cost</code></td>
+        <td><code>float, defualt = 1.0</code></td>
+        <td><p>Base cost of running simulations. Total cost is base + <code>cost</code> variable</p></td>
+        <td><code>1.0</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>dict</code></td>
+      <td><p>Dictionary with output data at the end of optimization</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>xopt/bayesian/algorithms.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">multi_fidelity_optimize</span><span class="p">(</span>
+    <span class="n">vocs</span><span class="p">,</span> <span class="n">evaluate_f</span><span class="p">,</span> <span class="n">budget</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">base_cost</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Multi-fidelity optimization using Bayesian optimization</span>
+
+<span class="sd">    This optimization algorithm attempts to reduce the computational cost of</span>
+<span class="sd">    optimizing a scalar function through the use of many low-cost approximate</span>
+<span class="sd">    evaluations. We create a GP model that models the function f(x,c) where x</span>
+<span class="sd">    represents free parameters and c in the range [0,1] reperestents the `cost`.</span>
+<span class="sd">    This algorithm uses the knoweldge gradient approach</span>
+<span class="sd">    (https://botorch.org/tutorials/multi_fidelity_bo) to choose points that are</span>
+<span class="sd">    likely to provide the most information about the optimimum point at maximum</span>
+<span class="sd">    fidelity (c=1).</span>
+
+<span class="sd">    Since evaluations have variable cost, we specify a maximum `budget` that</span>
+<span class="sd">    stops the algorithm when the total cost exceeds the budget. Cost for a single</span>
+<span class="sd">    evaluation is given by `cost` + &#39;base_cost`.</span>
+
+<span class="sd">    This algoritm is most efficient when used with a parallel executor,</span>
+<span class="sd">    as evaluations will be done asynchronously, allowing multiple cheap</span>
+<span class="sd">    simulations to run in parallel with expensive ones.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    vocs : dict</span>
+<span class="sd">        Varabiles, objectives, constraints and statics dictionary, see xopt</span>
+<span class="sd">        documentation for detials</span>
+
+<span class="sd">    evaluate_f : callable</span>
+<span class="sd">        Returns dict of outputs after problem has been evaluated</span>
+
+<span class="sd">    budget : int, default = 1</span>
+<span class="sd">        Optimization budget</span>
+
+<span class="sd">    processes : int, defualt = 1</span>
+<span class="sd">        Number of parallel processes to use or number of candidates to generate</span>
+<span class="sd">        at each step.</span>
+
+<span class="sd">    base_cost : float, defualt = 1.0</span>
+<span class="sd">        Base cost of running simulations. Total cost is base + `cost` variable</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    results : dict</span>
+<span class="sd">        Dictionary with output data at the end of optimization</span>
+
+<span class="sd">    Other Parameters</span>
+<span class="sd">    ----------------</span>
+<span class="sd">    **kwargs : `~xopt.bayesian.optimizer` properties</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">options</span> <span class="o">=</span> <span class="n">KWARG_DEFAULTS</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">options</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="n">generator_options</span> <span class="o">=</span> <span class="n">options</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;generator_options&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">options</span><span class="p">[</span><span class="s2">&quot;custom_model&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">options</span><span class="p">[</span><span class="s2">&quot;custom_model&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">create_multi_fidelity_model</span>
+
+    <span class="n">generator_options</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;fixed_cost&quot;</span><span class="p">:</span> <span class="n">base_cost</span><span class="p">})</span>
+    <span class="n">generator</span> <span class="o">=</span> <span class="n">generators</span><span class="o">.</span><span class="n">multi_fidelity</span><span class="o">.</span><span class="n">MultiFidelityGenerator</span><span class="p">(</span>
+        <span class="n">vocs</span><span class="p">,</span> <span class="o">**</span><span class="n">generator_options</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">optimize</span><span class="p">(</span>
+        <span class="n">vocs</span><span class="p">,</span>
+        <span class="n">evaluate_f</span><span class="p">,</span>
+        <span class="n">generator</span><span class="p">,</span>
+        <span class="n">budget</span><span class="o">=</span><span class="n">budget</span><span class="p">,</span>
+        <span class="n">processes</span><span class="o">=</span><span class="n">processes</span><span class="p">,</span>
+        <span class="n">base_cost</span><span class="o">=</span><span class="n">base_cost</span><span class="p">,</span>
+        <span class="n">tkwargs</span><span class="o">=</span><span class="n">generator</span><span class="o">.</span><span class="n">tkwargs</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">options</span><span class="p">,</span>
+    <span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
 
 
 
