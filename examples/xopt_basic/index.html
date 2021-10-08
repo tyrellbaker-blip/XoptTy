@@ -14,7 +14,7 @@
     
     
       
-        <title>Xopt class, TNK test function - Xopt</title>
+        <title>Xopt basic example - Xopt</title>
       
     
     
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#xopt-class-tnk-test-function" class="md-skip">
+        <a href="#xopt-basic-example" class="md-skip">
           Skip to content
         </a>
       
@@ -99,7 +99,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Xopt class, TNK test function
+              Xopt basic example
             
           </span>
         </div>
@@ -301,9 +301,39 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Xopt basic example
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
-        Xopt class, TNK test function
+        Xopt basic example
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tnk-test-function" class="md-nav__link">
+    TNK test function
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -457,6 +487,21 @@
   
     
   
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tnk-test-function" class="md-nav__link">
+    TNK test function
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -1146,9 +1191,9 @@ all of MD as it is not optimized for dense, information rich UIs.
     <!-- End of mathjax configuration --><div class="jupyter-wrapper">
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="xopt-class-tnk-test-function">Xopt class, TNK test function<a class="anchor-link" href="#Xopt-class,-TNK-test-function">&#182;</a></h1><p>This is the class method for running Xopt.</p>
-<p>TNK function
-$n=2$ variables:
+<h1 id="xopt-basic-example">Xopt basic example<a class="anchor-link" href="#Xopt-basic-example">&#182;</a></h1><p>An Xopt problem can be described by a simple YAML file. Here we will demonstrate how this is used to optimize a well-known constrained multi-objective test function, TNK.</p>
+<h2 id="tnk-test-function">TNK test function<a class="anchor-link" href="#TNK-test-function">&#182;</a></h2><p>The TNK function is defined with:</p>
+<p>$n=2$ variables:
 $x_i \in [0, \pi], i=1,2$</p>
 <p>Objectives:</p>
 <ul>
@@ -1165,7 +1210,7 @@ $x_i \in [0, \pi], i=1,2$</p>
 <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="zeroclipboard-container">
@@ -1181,18 +1226,38 @@ $x_i \in [0, \pi], i=1,2$</p>
         <div class="CodeMirror cm-s-jupyter">
             <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Import the class</span>
 <span class="kn">from</span> <span class="nn">xopt</span> <span class="kn">import</span> <span class="n">Xopt</span>
-
-<span class="c1"># Notebook printing output</span>
-<span class="kn">from</span> <span class="nn">xopt</span> <span class="kn">import</span> <span class="n">output_notebook</span>
-<span class="n">output_notebook</span><span class="p">()</span>
 </pre></div>
 <div id="cell-1" class="clipboard-copy-txt"># Import the class
-from xopt import Xopt
+from xopt import Xopt</div>
+    
+        </div>
+    </div>
 
-# Notebook printing output
-from xopt import output_notebook
-output_notebook()
 </div>
+</div>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+        
+        
+        <div class="zeroclipboard-container">
+            <clipboard-copy for="cell-2">
+            <div>
+                <span class="notice" hidden>Copied!</span>
+                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
+                    <path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
+                </svg>
+                </div>
+            </clipboard-copy>
+        </div>
+        <div class="CodeMirror cm-s-jupyter">
+            <div class="highlight-ipynb hl-python"><pre><span></span><span class="err">!</span><span class="n">mkdir</span> <span class="n">temp</span>
+</pre></div>
+<div id="cell-2" class="clipboard-copy-txt">!mkdir temp</div>
     
         </div>
     </div>
@@ -1216,7 +1281,7 @@ output_notebook()
         
         
         <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-2">
+            <clipboard-copy for="cell-3">
             <div>
                 <span class="notice" hidden>Copied!</span>
                 <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
@@ -1226,11 +1291,11 @@ output_notebook()
             </clipboard-copy>
         </div>
         <div class="CodeMirror cm-s-jupyter">
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span> <span class="nn">yaml</span>
-<span class="c1"># Make a proper input file. </span>
+            <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Make a proper input file. </span>
 <span class="n">YAML</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">xopt: {output_path: null}</span>
-
+<span class="s2">xopt:</span>
+<span class="s2">  output_path: temp</span>
+<span class="s2">  </span>
 <span class="s2">algorithm:</span>
 <span class="s2">  name: cnsga</span>
 <span class="s2">  options:</span>
@@ -1254,13 +1319,12 @@ output_notebook()
 <span class="s2">  constants: {a: dummy_constant}</span>
 
 <span class="s2">&quot;&quot;&quot;</span>
-<span class="n">config</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">YAML</span><span class="p">)</span>
 </pre></div>
-<div id="cell-2" class="clipboard-copy-txt">import yaml
-# Make a proper input file. 
+<div id="cell-3" class="clipboard-copy-txt"># Make a proper input file. 
 YAML="""
-xopt: {output_path: null}
-
+xopt:
+  output_path: temp
+  
 algorithm:
   name: cnsga
   options:
@@ -1283,8 +1347,7 @@ vocs:
   linked_variables: {x9: x1}
   constants: {a: dummy_constant}
 
-"""
-config = yaml.safe_load(YAML)</div>
+"""</div>
     
         </div>
     </div>
@@ -1301,7 +1364,7 @@ config = yaml.safe_load(YAML)</div>
         
         
         <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-3">
+            <clipboard-copy for="cell-4">
             <div>
                 <span class="notice" hidden>Copied!</span>
                 <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
@@ -1312,17 +1375,17 @@ config = yaml.safe_load(YAML)</div>
         </div>
         <div class="CodeMirror cm-s-jupyter">
             <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Optional: Connect the function directly</span>
-<span class="c1">#from xopt.evaluators.test_TNK import evaluate_TNK </span>
-<span class="c1">#config[&#39;simulation&#39;][&#39;evaluate&#39;] = evaluate_TNK </span>
+<span class="c1"># from xopt.tests.evaluators.TNK import evaluate_TNK </span>
+<span class="c1"># config[&#39;simulation&#39;][&#39;evaluate&#39;] = evaluate_TNK </span>
 
-<span class="n">X</span> <span class="o">=</span> <span class="n">Xopt</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">Xopt</span><span class="p">(</span><span class="n">YAML</span><span class="p">)</span>
 <span class="n">X</span>
 </pre></div>
-<div id="cell-3" class="clipboard-copy-txt"># Optional: Connect the function directly
-#from xopt.evaluators.test_TNK import evaluate_TNK 
-#config['simulation']['evaluate'] = evaluate_TNK 
+<div id="cell-4" class="clipboard-copy-txt"># Optional: Connect the function directly
+# from xopt.tests.evaluators.TNK import evaluate_TNK 
+# config['simulation']['evaluate'] = evaluate_TNK 
 
-X = Xopt(config)
+X = Xopt(YAML)
 X</div>
     
         </div>
@@ -1339,23 +1402,6 @@ X</div>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Loading config from dict.
-Loading config from dict.
-Loading config from dict.
-Loading config from dict.
-Loading config from dict.
-Warning: No path set for key xopt : output_path
-</pre>
-</div>
-</div>
-
-<div class="jp-OutputArea-child">
-
-    
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[4]:</div>
 
 
@@ -1365,20 +1411,19 @@ Warning: No path set for key xopt : output_path
 <pre>
             Xopt 
 ________________________________           
-Version: 0.4.3+178.g392b747.dirty
+Version: 0.4.3+219.gfff1660.dirty
 Configured: True
 Config as YAML:
-xopt: {output_path: null}
+xopt: {output_path: /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp}
 algorithm:
   name: cnsga
   options: {max_generations: 50, population_size: 128, show_progress: true, population: null,
-    seed: null, crossover_probability: 0.9, mutation_probability: 1.0, selection: auto,
-    verbose: null}
+    crossover_probability: 0.9, mutation_probability: 1.0, selection: auto, verbose: null,
+    seed: null}
   function: xopt.cnsga.cnsga
 simulation:
   name: test_TNK
   evaluate: xopt.tests.evaluators.TNK.evaluate_TNK
-  function: xopt.tests.evaluators.TNK.evaluate_TNK
   options: {extra_option: abc}
 vocs:
   variables:
@@ -1407,7 +1452,7 @@ vocs:
         
         
         <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-4">
+            <clipboard-copy for="cell-5">
             <div>
                 <span class="notice" hidden>Copied!</span>
                 <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
@@ -1420,7 +1465,7 @@ vocs:
             <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Note that the repr string contains all of the config information</span>
 <span class="n">X</span><span class="o">.</span><span class="n">random_evaluate</span><span class="p">()</span>
 </pre></div>
-<div id="cell-4" class="clipboard-copy-txt"># Note that the repr string contains all of the config information
+<div id="cell-5" class="clipboard-copy-txt"># Note that the repr string contains all of the config information
 X.random_evaluate()</div>
     
         </div>
@@ -1443,10 +1488,10 @@ X.random_evaluate()</div>
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>{&#39;y1&#39;: 0.33301119933977213,
- &#39;y2&#39;: 1.6197659590613929,
- &#39;c1&#39;: 1.8340115613003478,
- &#39;c2&#39;: 1.2817610626186222,
+<pre>{&#39;y1&#39;: 0.13621536632775552,
+ &#39;y2&#39;: 2.117301068698414,
+ &#39;c1&#39;: 3.449859577343478,
+ &#39;c2&#39;: 2.748002006509081,
  &#39;some_array&#39;: array([1, 2, 3])}</pre>
 </div>
 
@@ -1454,6 +1499,78 @@ X.random_evaluate()</div>
 
 </div>
 
+</div>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+        
+        
+        <div class="zeroclipboard-container">
+            <clipboard-copy for="cell-6">
+            <div>
+                <span class="notice" hidden>Copied!</span>
+                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
+                    <path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
+                </svg>
+                </div>
+            </clipboard-copy>
+        </div>
+        <div class="CodeMirror cm-s-jupyter">
+            <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1">#Optional: Connect the function directly</span>
+<span class="c1"># from xopt.tests.evaluators.TNK import evaluate_TNK </span>
+<span class="c1"># X.config[&#39;simulation&#39;][&#39;evaluate&#39;] = evaluate_TNK </span>
+<span class="c1"># X.configure_simulation()</span>
+</pre></div>
+<div id="cell-6" class="clipboard-copy-txt">#Optional: Connect the function directly
+# from xopt.tests.evaluators.TNK import evaluate_TNK 
+# X.config['simulation']['evaluate'] = evaluate_TNK 
+# X.configure_simulation()</div>
+    
+        </div>
+    </div>
+
+</div>
+</div>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>By default, all messages go to the logger. This allows notebook printing without timestamps of those messages.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+        
+        
+        <div class="zeroclipboard-container">
+            <clipboard-copy for="cell-7">
+            <div>
+                <span class="notice" hidden>Copied!</span>
+                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
+                    <path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
+                </svg>
+                </div>
+            </clipboard-copy>
+        </div>
+        <div class="CodeMirror cm-s-jupyter">
+            <div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span> <span class="nn">xopt</span> <span class="kn">import</span> <span class="n">output_notebook</span>
+<span class="n">output_notebook</span><span class="p">()</span>
+</pre></div>
+<div id="cell-7" class="clipboard-copy-txt">from xopt import output_notebook
+output_notebook()</div>
+    
+        </div>
+    </div>
+
+</div>
 </div>
 
 </div>
@@ -1467,42 +1584,11 @@ X.random_evaluate()</div>
 <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-5">
-            <div>
-                <span class="notice" hidden>Copied!</span>
-                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
-                    <path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
-                </svg>
-                </div>
-            </clipboard-copy>
-        </div>
-        <div class="CodeMirror cm-s-jupyter">
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1">#import logging, sys</span>
-<span class="c1">#logging.basicConfig(format=&#39;%(message)s&#39;, level=logging.INFO, stream=sys.stdout)</span>
-</pre></div>
-<div id="cell-5" class="clipboard-copy-txt">#import logging, sys
-#logging.basicConfig(format='%(message)s', level=logging.INFO, stream=sys.stdout)</div>
-    
-        </div>
-    </div>
-
-</div>
-</div>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-        
-        
-        <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-6">
+            <clipboard-copy for="cell-8">
             <div>
                 <span class="notice" hidden>Copied!</span>
                 <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
@@ -1521,7 +1607,7 @@ X.random_evaluate()</div>
 <span class="c1"># This will also work. </span>
 <span class="c1">#executor=None</span>
 </pre></div>
-<div id="cell-6" class="clipboard-copy-txt"># Pick one of these
+<div id="cell-8" class="clipboard-copy-txt"># Pick one of these
 
 #from concurrent.futures import ThreadPoolExecutor as PoolExecutor
 from concurrent.futures import ProcessPoolExecutor as PoolExecutor
@@ -1541,11 +1627,11 @@ executor = PoolExecutor()
 <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-7">
+            <clipboard-copy for="cell-9">
             <div>
                 <span class="notice" hidden>Copied!</span>
                 <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
@@ -1559,7 +1645,7 @@ executor = PoolExecutor()
 <span class="n">X</span><span class="o">.</span><span class="n">algorithm</span><span class="p">[</span><span class="s1">&#39;options&#39;</span><span class="p">][</span><span class="s1">&#39;max_generations&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">X</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">executor</span><span class="o">=</span><span class="n">executor</span><span class="p">)</span>
 </pre></div>
-<div id="cell-7" class="clipboard-copy-txt"># Change max generations
+<div id="cell-9" class="clipboard-copy-txt"># Change max generations
 X.algorithm['options']['max_generations'] = 10
 X.run(executor=executor)</div>
     
@@ -1581,7 +1667,7 @@ X.run(executor=executor)</div>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Starting at time 2021-09-27T21:56:44-07:00
+<pre>Starting at time 2021-10-08T13:09:29-07:00
 
     
     
@@ -1598,7 +1684,7 @@ X.run(executor=executor)</div>
     
     
     Continuous Non-dominated Sorting Genetic Algorithm
-    Version 0.4.3+178.g392b747.dirty
+    Version 0.4.3+219.gfff1660.dirty
     
 Creating toolbox from vocs.
 Created toolbox with 2 variables, 2 constraints, and 2 objectives.
@@ -1609,6 +1695,7 @@ ____________________________________________________
 128 fitness calculations for initial generation
 done.
 Submitting first batch of children
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/initial_pop_0.json
 </pre>
 </div>
 </div>
@@ -1624,12 +1711,12 @@ Submitting first batch of children
 
 
 
-<div id="dea23487-2cb6-449e-ba2e-fcaa596517b3" class="jupyter-widgets jp-OutputArea-output ">
+<div id="22dcbc55-3ed8-480e-b39d-73cbce9a1822" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('dea23487-2cb6-449e-ba2e-fcaa596517b3');
+var element = document.getElementById('22dcbc55-3ed8-480e-b39d-73cbce9a1822');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "e14bb4168e33494aaf9ce69f3b98acfc", "version_major": 2, "version_minor": 0}
+{"model_id": "0535c3c045b5425e96c7e8d97f1023b7", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -1646,12 +1733,12 @@ var element = document.getElementById('dea23487-2cb6-449e-ba2e-fcaa596517b3');
 
 
 
-<div id="6e57cf22-cc69-40bb-8df3-23f86a92488e" class="jupyter-widgets jp-OutputArea-output ">
+<div id="b890e9c1-09ee-4319-9ad6-a9fb5d26f78f" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('6e57cf22-cc69-40bb-8df3-23f86a92488e');
+var element = document.getElementById('b890e9c1-09ee-4319-9ad6-a9fb5d26f78f');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "304d7fd9cb6a45389e6baf0ff8bb1bf5", "version_major": 2, "version_minor": 0}
+{"model_id": "e8ae81709c9e481880adb1d62544d031", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -1664,7 +1751,9 @@ var element = document.getElementById('6e57cf22-cc69-40bb-8df3-23f86a92488e');
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Generation 0 completed in 0.00208 minutes
+<pre>Generation 0 completed in 0.00224 minutes
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/gen_1.json
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/pop_1.json
 </pre>
 </div>
 </div>
@@ -1680,12 +1769,12 @@ var element = document.getElementById('6e57cf22-cc69-40bb-8df3-23f86a92488e');
 
 
 
-<div id="3d95c80b-1652-4583-a7da-ac0e20e7225b" class="jupyter-widgets jp-OutputArea-output ">
+<div id="bc470cfc-89fc-4f5f-b73d-d3a83972ca17" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('3d95c80b-1652-4583-a7da-ac0e20e7225b');
+var element = document.getElementById('bc470cfc-89fc-4f5f-b73d-d3a83972ca17');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "6c5321444cd34068bba356cc962f3176", "version_major": 2, "version_minor": 0}
+{"model_id": "f6e180c66b5c44ab9bf6bf1e8f8d94fc", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -1698,7 +1787,9 @@ var element = document.getElementById('3d95c80b-1652-4583-a7da-ac0e20e7225b');
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Generation 1 completed in 0.00401 minutes
+<pre>Generation 1 completed in 0.00407 minutes
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/gen_2.json
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/pop_2.json
 </pre>
 </div>
 </div>
@@ -1714,12 +1805,12 @@ var element = document.getElementById('3d95c80b-1652-4583-a7da-ac0e20e7225b');
 
 
 
-<div id="5d89fb4e-c3e6-4810-96f5-ff40be6198cc" class="jupyter-widgets jp-OutputArea-output ">
+<div id="0b91770b-280d-4f60-b899-db2e681e099b" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('5d89fb4e-c3e6-4810-96f5-ff40be6198cc');
+var element = document.getElementById('0b91770b-280d-4f60-b899-db2e681e099b');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "4dde49a807f6477e94a68097aad6fe53", "version_major": 2, "version_minor": 0}
+{"model_id": "b859f7e2745c42ffb9a64b87866e63af", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -1732,7 +1823,9 @@ var element = document.getElementById('5d89fb4e-c3e6-4810-96f5-ff40be6198cc');
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Generation 2 completed in 0.00398 minutes
+<pre>Generation 2 completed in 0.00416 minutes
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/gen_3.json
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/pop_3.json
 </pre>
 </div>
 </div>
@@ -1748,12 +1841,12 @@ var element = document.getElementById('5d89fb4e-c3e6-4810-96f5-ff40be6198cc');
 
 
 
-<div id="401aa413-4d12-4ae6-91e9-f130b86f6c7e" class="jupyter-widgets jp-OutputArea-output ">
+<div id="0f197900-f4a4-44f1-b2a0-656ff0830459" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('401aa413-4d12-4ae6-91e9-f130b86f6c7e');
+var element = document.getElementById('0f197900-f4a4-44f1-b2a0-656ff0830459');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "43cf5579ec1140009ad1959c2f3b1259", "version_major": 2, "version_minor": 0}
+{"model_id": "59106f57bd78473ab8e2c7d8ae88353a", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -1766,7 +1859,9 @@ var element = document.getElementById('401aa413-4d12-4ae6-91e9-f130b86f6c7e');
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Generation 3 completed in 0.00372 minutes
+<pre>Generation 3 completed in 0.00400 minutes
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/gen_4.json
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/pop_4.json
 </pre>
 </div>
 </div>
@@ -1782,12 +1877,12 @@ var element = document.getElementById('401aa413-4d12-4ae6-91e9-f130b86f6c7e');
 
 
 
-<div id="d75dda53-e30a-43a7-9dee-47afb60d40ca" class="jupyter-widgets jp-OutputArea-output ">
+<div id="6935a9f1-51c8-4772-8b82-b19e80987db8" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('d75dda53-e30a-43a7-9dee-47afb60d40ca');
+var element = document.getElementById('6935a9f1-51c8-4772-8b82-b19e80987db8');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "1b00a494e27f4098a73565d60853036c", "version_major": 2, "version_minor": 0}
+{"model_id": "31cad13b5e5840ea920158fc4756603e", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -1800,7 +1895,9 @@ var element = document.getElementById('d75dda53-e30a-43a7-9dee-47afb60d40ca');
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Generation 4 completed in 0.00353 minutes
+<pre>Generation 4 completed in 0.00391 minutes
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/gen_5.json
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/pop_5.json
 </pre>
 </div>
 </div>
@@ -1816,12 +1913,12 @@ var element = document.getElementById('d75dda53-e30a-43a7-9dee-47afb60d40ca');
 
 
 
-<div id="b70efde1-7551-4e59-87f4-96ba43f94b91" class="jupyter-widgets jp-OutputArea-output ">
+<div id="53450f7a-4e0d-4016-9f7c-4cb149fa07c8" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('b70efde1-7551-4e59-87f4-96ba43f94b91');
+var element = document.getElementById('53450f7a-4e0d-4016-9f7c-4cb149fa07c8');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "64387d38e7a64ff689d3fb8422997826", "version_major": 2, "version_minor": 0}
+{"model_id": "9f0a86cb54c1488884aeb2d2136a922e", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -1834,7 +1931,9 @@ var element = document.getElementById('b70efde1-7551-4e59-87f4-96ba43f94b91');
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Generation 5 completed in 0.00324 minutes
+<pre>Generation 5 completed in 0.00389 minutes
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/gen_6.json
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/pop_6.json
 </pre>
 </div>
 </div>
@@ -1850,12 +1949,12 @@ var element = document.getElementById('b70efde1-7551-4e59-87f4-96ba43f94b91');
 
 
 
-<div id="6a9e8690-0b4b-4b5b-abc8-612b145ed2b7" class="jupyter-widgets jp-OutputArea-output ">
+<div id="778d52ee-3e9d-4d69-a42e-9ed7da737bc6" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('6a9e8690-0b4b-4b5b-abc8-612b145ed2b7');
+var element = document.getElementById('778d52ee-3e9d-4d69-a42e-9ed7da737bc6');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "af5757f8afb8407c99386f571cd972bc", "version_major": 2, "version_minor": 0}
+{"model_id": "fdaf960654a9488e9dae8315534bda01", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -1868,7 +1967,9 @@ var element = document.getElementById('6a9e8690-0b4b-4b5b-abc8-612b145ed2b7');
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Generation 6 completed in 0.00314 minutes
+<pre>Generation 6 completed in 0.00363 minutes
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/gen_7.json
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/pop_7.json
 </pre>
 </div>
 </div>
@@ -1884,12 +1985,12 @@ var element = document.getElementById('6a9e8690-0b4b-4b5b-abc8-612b145ed2b7');
 
 
 
-<div id="d0806c64-3116-455c-8956-a996319d996e" class="jupyter-widgets jp-OutputArea-output ">
+<div id="5a64d37b-95a6-4e40-aa82-16046e58d197" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('d0806c64-3116-455c-8956-a996319d996e');
+var element = document.getElementById('5a64d37b-95a6-4e40-aa82-16046e58d197');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "0bf8250dd16740a69f17e98dca49105c", "version_major": 2, "version_minor": 0}
+{"model_id": "b7a9dcfdbc694b839ce9eed737445d6e", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -1902,7 +2003,9 @@ var element = document.getElementById('d0806c64-3116-455c-8956-a996319d996e');
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Generation 7 completed in 0.00376 minutes
+<pre>Generation 7 completed in 0.00391 minutes
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/gen_8.json
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/pop_8.json
 </pre>
 </div>
 </div>
@@ -1918,12 +2021,12 @@ var element = document.getElementById('d0806c64-3116-455c-8956-a996319d996e');
 
 
 
-<div id="f33cb89b-88a6-4d1e-9a5e-1ae0646b97e3" class="jupyter-widgets jp-OutputArea-output ">
+<div id="38acbf1c-3849-4aff-ad07-9ac815028523" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('f33cb89b-88a6-4d1e-9a5e-1ae0646b97e3');
+var element = document.getElementById('38acbf1c-3849-4aff-ad07-9ac815028523');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "d3b46386dba64e98be330a98cdc7b677", "version_major": 2, "version_minor": 0}
+{"model_id": "41932452e727434ea92fdceb0242499a", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -1936,7 +2039,9 @@ var element = document.getElementById('f33cb89b-88a6-4d1e-9a5e-1ae0646b97e3');
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Generation 8 completed in 0.00389 minutes
+<pre>Generation 8 completed in 0.00343 minutes
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/gen_9.json
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/pop_9.json
 </pre>
 </div>
 </div>
@@ -1952,12 +2057,12 @@ var element = document.getElementById('f33cb89b-88a6-4d1e-9a5e-1ae0646b97e3');
 
 
 
-<div id="06ca0bf0-4fcb-4128-917e-ebbac55c11de" class="jupyter-widgets jp-OutputArea-output ">
+<div id="0f5031a0-5601-4a88-8db6-20b6f973512d" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('06ca0bf0-4fcb-4128-917e-ebbac55c11de');
+var element = document.getElementById('0f5031a0-5601-4a88-8db6-20b6f973512d');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "c0747ff20ce744c086975a6e83a43d77", "version_major": 2, "version_minor": 0}
+{"model_id": "ab7d8dfa11b84f909ee33cca6224f5b4", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -1970,63 +2075,11 @@ var element = document.getElementById('06ca0bf0-4fcb-4128-917e-ebbac55c11de');
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Generation 9 completed in 0.00314 minutes
+<pre>Generation 9 completed in 0.00361 minutes
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/gen_10.json
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/pop_10.json
 </pre>
 </div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-        
-        
-        <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-8">
-            <div>
-                <span class="notice" hidden>Copied!</span>
-                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
-                    <path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
-                </svg>
-                </div>
-            </clipboard-copy>
-        </div>
-        <div class="CodeMirror cm-s-jupyter">
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># The last population is saved internally:</span>
-<span class="nb">list</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">results</span><span class="p">)</span>
-</pre></div>
-<div id="cell-8" class="clipboard-copy-txt"># The last population is saved internally:
-list(X.results)</div>
-    
-        </div>
-    </div>
-
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>[&#39;variables&#39;, &#39;generation&#39;, &#39;vocs&#39;, &#39;error&#39;, &#39;inputs&#39;, &#39;outputs&#39;]</pre>
-</div>
-
 </div>
 
 </div>
@@ -2042,7 +2095,7 @@ list(X.results)</div>
         
         
         <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-9">
+            <clipboard-copy for="cell-10">
             <div>
                 <span class="notice" hidden>Copied!</span>
                 <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
@@ -2052,9 +2105,11 @@ list(X.results)</div>
             </clipboard-copy>
         </div>
         <div class="CodeMirror cm-s-jupyter">
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">X</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;outputs&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+            <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># The last population is saved internally:</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">results</span><span class="p">)</span>
 </pre></div>
-<div id="cell-9" class="clipboard-copy-txt">X.results['outputs'][0:5]</div>
+<div id="cell-10" class="clipboard-copy-txt"># The last population is saved internally:
+list(X.results)</div>
     
         </div>
     </div>
@@ -2076,30 +2131,82 @@ list(X.results)</div>
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>[{&#39;y1&#39;: 0.22524245050292685,
-  &#39;y2&#39;: 0.9343099465903918,
-  &#39;c1&#39;: 0.0036725523792643933,
-  &#39;c2&#39;: 0.2641168407129856,
+<pre>[&#39;variables&#39;, &#39;generation&#39;, &#39;vocs&#39;, &#39;error&#39;, &#39;inputs&#39;, &#39;outputs&#39;]</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+        
+        
+        <div class="zeroclipboard-container">
+            <clipboard-copy for="cell-11">
+            <div>
+                <span class="notice" hidden>Copied!</span>
+                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
+                    <path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
+                </svg>
+                </div>
+            </clipboard-copy>
+        </div>
+        <div class="CodeMirror cm-s-jupyter">
+            <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">X</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;outputs&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+<div id="cell-11" class="clipboard-copy-txt">X.results['outputs'][0:5]</div>
+    
+        </div>
+    </div>
+
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[11]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>[{&#39;y1&#39;: 0.8043283865677104,
+  &#39;y2&#39;: 0.5215126787901337,
+  &#39;c1&#39;: 0.01648798300576214,
+  &#39;c2&#39;: 0.09307856221963326,
   &#39;some_array&#39;: array([1, 2, 3])},
- {&#39;y1&#39;: 0.15678213036244615,
-  &#39;y2&#39;: 0.9946174258530668,
-  &#39;c1&#39;: 0.0940488785384031,
-  &#39;c2&#39;: 0.36244490399605495,
+ {&#39;y1&#39;: 0.49582629390953487,
+  &#39;y2&#39;: 0.8613828740997236,
+  &#39;c1&#39;: 0.03601044476257063,
+  &#39;c2&#39;: 0.13061500151510624,
   &#39;some_array&#39;: array([1, 2, 3])},
- {&#39;y1&#39;: 0.9280792161401854,
-  &#39;y2&#39;: 0.4551060753958438,
-  &#39;c1&#39;: 0.01539290920388546,
-  &#39;c2&#39;: 0.18526727975755924,
+ {&#39;y1&#39;: 0.49582629390953487,
+  &#39;y2&#39;: 0.8613828740997236,
+  &#39;c1&#39;: 0.03601044476257063,
+  &#39;c2&#39;: 0.13061500151510624,
   &#39;some_array&#39;: array([1, 2, 3])},
- {&#39;y1&#39;: 0.14470080070519548,
-  &#39;y2&#39;: 1.011609163256102,
-  &#39;c1&#39;: 0.10889864036270927,
-  &#39;c2&#39;: 0.387981456947138,
+ {&#39;y1&#39;: 0.9561750907536056,
+  &#39;y2&#39;: 0.16119140577018903,
+  &#39;c1&#39;: 0.029435344180595402,
+  &#39;c2&#39;: 0.322886976948041,
   &#39;some_array&#39;: array([1, 2, 3])},
- {&#39;y1&#39;: 0.7878829205341547,
-  &#39;y2&#39;: 0.7156218522665277,
-  &#39;c1&#39;: 0.060971545360850046,
-  &#39;c2&#39;: 0.12936935911012273,
+ {&#39;y1&#39;: 0.7960670031735642,
+  &#39;y2&#39;: 0.5533881396205008,
+  &#39;c1&#39;: 0.03565098319555489,
+  &#39;c2&#39;: 0.09050596382031334,
   &#39;some_array&#39;: array([1, 2, 3])}]</pre>
 </div>
 
@@ -2114,11 +2221,11 @@ list(X.results)</div>
 <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-10">
+            <clipboard-copy for="cell-12">
             <div>
                 <span class="notice" hidden>Copied!</span>
                 <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
@@ -2132,7 +2239,7 @@ list(X.results)</div>
 <span class="n">X</span><span class="o">.</span><span class="n">algorithm</span><span class="p">[</span><span class="s1">&#39;options&#39;</span><span class="p">][</span><span class="s1">&#39;max_generations&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">20</span>
 <span class="n">X</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">executor</span><span class="o">=</span><span class="n">executor</span><span class="p">)</span>
 </pre></div>
-<div id="cell-10" class="clipboard-copy-txt"># Increase the max_generations, and it will continue where it left off
+<div id="cell-12" class="clipboard-copy-txt"># Increase the max_generations, and it will continue where it left off
 X.algorithm['options']['max_generations'] = 20
 X.run(executor=executor)</div>
     
@@ -2154,7 +2261,7 @@ X.run(executor=executor)</div>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Starting at time 2021-09-27T21:56:49-07:00
+<pre>Starting at time 2021-10-08T13:09:32-07:00
 
     
     
@@ -2171,7 +2278,7 @@ X.run(executor=executor)</div>
     
     
     Continuous Non-dominated Sorting Genetic Algorithm
-    Version 0.4.3+178.g392b747.dirty
+    Version 0.4.3+219.gfff1660.dirty
     
 Creating toolbox from vocs.
 Created toolbox with 2 variables, 2 constraints, and 2 objectives.
@@ -2183,6 +2290,7 @@ ____________________________________________________
 128 fitness calculations for initial generation
 done.
 Submitting first batch of children
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/initial_pop_11.json
 </pre>
 </div>
 </div>
@@ -2198,12 +2306,12 @@ Submitting first batch of children
 
 
 
-<div id="2cf7f480-e528-46ce-a445-b65fe8f90455" class="jupyter-widgets jp-OutputArea-output ">
+<div id="56725ccf-2b65-450f-aa4f-779fa06c4af8" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('2cf7f480-e528-46ce-a445-b65fe8f90455');
+var element = document.getElementById('56725ccf-2b65-450f-aa4f-779fa06c4af8');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "f1bbec3a71ce488a860df327bfa78c66", "version_major": 2, "version_minor": 0}
+{"model_id": "7d63108b1b7c43caac3874edaf701b3c", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -2220,12 +2328,12 @@ var element = document.getElementById('2cf7f480-e528-46ce-a445-b65fe8f90455');
 
 
 
-<div id="856b782f-a289-46df-aef5-e3dc18605719" class="jupyter-widgets jp-OutputArea-output ">
+<div id="3794cfba-0620-4c51-a5e3-25745af5e05f" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('856b782f-a289-46df-aef5-e3dc18605719');
+var element = document.getElementById('3794cfba-0620-4c51-a5e3-25745af5e05f');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "9020f1f118064e19bb911c33cbdf20fa", "version_major": 2, "version_minor": 0}
+{"model_id": "9eaa41450d254faa9759c6eb5c8f5e6e", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -2238,7 +2346,9 @@ var element = document.getElementById('856b782f-a289-46df-aef5-e3dc18605719');
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Generation 11 completed in 0.00715 minutes
+<pre>Generation 11 completed in 0.00805 minutes
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/gen_12.json
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/pop_12.json
 </pre>
 </div>
 </div>
@@ -2254,12 +2364,12 @@ var element = document.getElementById('856b782f-a289-46df-aef5-e3dc18605719');
 
 
 
-<div id="341f9141-5fc3-4d69-a279-b54b6b31e49a" class="jupyter-widgets jp-OutputArea-output ">
+<div id="c49abd6f-6ba5-4a33-a747-fca50af408b2" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('341f9141-5fc3-4d69-a279-b54b6b31e49a');
+var element = document.getElementById('c49abd6f-6ba5-4a33-a747-fca50af408b2');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "1f429672bfb14d148cece4ad981d3653", "version_major": 2, "version_minor": 0}
+{"model_id": "554fcf42682c4ac19aadece0241d8963", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -2272,7 +2382,9 @@ var element = document.getElementById('341f9141-5fc3-4d69-a279-b54b6b31e49a');
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Generation 12 completed in 0.00577 minutes
+<pre>Generation 12 completed in 0.00689 minutes
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/gen_13.json
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/pop_13.json
 </pre>
 </div>
 </div>
@@ -2288,12 +2400,12 @@ var element = document.getElementById('341f9141-5fc3-4d69-a279-b54b6b31e49a');
 
 
 
-<div id="dd5044a9-5864-4378-abbe-460baca5edf4" class="jupyter-widgets jp-OutputArea-output ">
+<div id="0b3198bc-6d9e-41d1-8ba2-61667e2c0131" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('dd5044a9-5864-4378-abbe-460baca5edf4');
+var element = document.getElementById('0b3198bc-6d9e-41d1-8ba2-61667e2c0131');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "94d05a667eb747bb91c2ec906d48cbe1", "version_major": 2, "version_minor": 0}
+{"model_id": "a14181da040342c4bd74a1b8fb621ef2", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -2306,7 +2418,9 @@ var element = document.getElementById('dd5044a9-5864-4378-abbe-460baca5edf4');
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Generation 13 completed in 0.00589 minutes
+<pre>Generation 13 completed in 0.00656 minutes
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/gen_14.json
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/pop_14.json
 </pre>
 </div>
 </div>
@@ -2322,12 +2436,12 @@ var element = document.getElementById('dd5044a9-5864-4378-abbe-460baca5edf4');
 
 
 
-<div id="bbbe74cc-f217-4766-94a5-babe5a0565a2" class="jupyter-widgets jp-OutputArea-output ">
+<div id="fbb42063-4807-40e8-8137-f42d7545dd0c" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('bbbe74cc-f217-4766-94a5-babe5a0565a2');
+var element = document.getElementById('fbb42063-4807-40e8-8137-f42d7545dd0c');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "28f78dbbd7744a849f6374308e10a256", "version_major": 2, "version_minor": 0}
+{"model_id": "20dbaa2b4dd94e049f5fd2973183ca35", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -2340,7 +2454,9 @@ var element = document.getElementById('bbbe74cc-f217-4766-94a5-babe5a0565a2');
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Generation 14 completed in 0.00585 minutes
+<pre>Generation 14 completed in 0.00690 minutes
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/gen_15.json
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/pop_15.json
 </pre>
 </div>
 </div>
@@ -2356,12 +2472,12 @@ var element = document.getElementById('bbbe74cc-f217-4766-94a5-babe5a0565a2');
 
 
 
-<div id="44c096f2-7244-4a3a-a406-9bf46112d61f" class="jupyter-widgets jp-OutputArea-output ">
+<div id="b026b3e5-2e37-47f9-b522-af5f7fbd37f7" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('44c096f2-7244-4a3a-a406-9bf46112d61f');
+var element = document.getElementById('b026b3e5-2e37-47f9-b522-af5f7fbd37f7');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "bbc0a61b66b74c99a9f487953aa0cd66", "version_major": 2, "version_minor": 0}
+{"model_id": "02eb7eb4e0f34b1e99ea7a204d41232e", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -2374,7 +2490,9 @@ var element = document.getElementById('44c096f2-7244-4a3a-a406-9bf46112d61f');
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Generation 15 completed in 0.00608 minutes
+<pre>Generation 15 completed in 0.00695 minutes
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/gen_16.json
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/pop_16.json
 </pre>
 </div>
 </div>
@@ -2390,12 +2508,12 @@ var element = document.getElementById('44c096f2-7244-4a3a-a406-9bf46112d61f');
 
 
 
-<div id="3f736b4b-20d5-4dd8-a313-1345a133088b" class="jupyter-widgets jp-OutputArea-output ">
+<div id="eaceec68-89bb-4b5f-92ec-a4bf7c398231" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('3f736b4b-20d5-4dd8-a313-1345a133088b');
+var element = document.getElementById('eaceec68-89bb-4b5f-92ec-a4bf7c398231');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "dd360ac204684153a88c8b80e1a232a3", "version_major": 2, "version_minor": 0}
+{"model_id": "cd330082124d4b3ba82c21f9ee1defd8", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -2408,7 +2526,9 @@ var element = document.getElementById('3f736b4b-20d5-4dd8-a313-1345a133088b');
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Generation 16 completed in 0.00562 minutes
+<pre>Generation 16 completed in 0.00686 minutes
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/gen_17.json
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/pop_17.json
 </pre>
 </div>
 </div>
@@ -2424,12 +2544,12 @@ var element = document.getElementById('3f736b4b-20d5-4dd8-a313-1345a133088b');
 
 
 
-<div id="6a4889b7-163c-4a39-b1d7-7bdd8cb695ee" class="jupyter-widgets jp-OutputArea-output ">
+<div id="660bffed-9f2f-4752-bb5f-97f2c0343493" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('6a4889b7-163c-4a39-b1d7-7bdd8cb695ee');
+var element = document.getElementById('660bffed-9f2f-4752-bb5f-97f2c0343493');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "4fb16fca02f1470793e21e0690fed5bc", "version_major": 2, "version_minor": 0}
+{"model_id": "b5933d78e8c142f5be0a23f062fccff0", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -2442,7 +2562,9 @@ var element = document.getElementById('6a4889b7-163c-4a39-b1d7-7bdd8cb695ee');
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Generation 17 completed in 0.00574 minutes
+<pre>Generation 17 completed in 0.00607 minutes
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/gen_18.json
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/pop_18.json
 </pre>
 </div>
 </div>
@@ -2458,12 +2580,12 @@ var element = document.getElementById('6a4889b7-163c-4a39-b1d7-7bdd8cb695ee');
 
 
 
-<div id="999554c8-3be2-4af0-bf1a-5599a69fa95d" class="jupyter-widgets jp-OutputArea-output ">
+<div id="7c5266be-895c-49c1-88d2-715b67618b77" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('999554c8-3be2-4af0-bf1a-5599a69fa95d');
+var element = document.getElementById('7c5266be-895c-49c1-88d2-715b67618b77');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "60bbb51bf7494737987e138797fb967d", "version_major": 2, "version_minor": 0}
+{"model_id": "e4ec0a0c06774d88bb089464b45bc4a7", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -2476,7 +2598,9 @@ var element = document.getElementById('999554c8-3be2-4af0-bf1a-5599a69fa95d');
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Generation 18 completed in 0.00613 minutes
+<pre>Generation 18 completed in 0.00616 minutes
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/gen_19.json
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/pop_19.json
 </pre>
 </div>
 </div>
@@ -2492,12 +2616,12 @@ var element = document.getElementById('999554c8-3be2-4af0-bf1a-5599a69fa95d');
 
 
 
-<div id="650a6931-9f3a-4edf-92e0-7a719b9fcede" class="jupyter-widgets jp-OutputArea-output ">
+<div id="15dbd321-4ad7-44b7-98d2-fa6fc80b7f88" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('650a6931-9f3a-4edf-92e0-7a719b9fcede');
+var element = document.getElementById('15dbd321-4ad7-44b7-98d2-fa6fc80b7f88');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "5e726e7ad7244843bd4abd0835db0d6d", "version_major": 2, "version_minor": 0}
+{"model_id": "cfbea7f05b3a4b0c8defd01d2344da55", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -2510,7 +2634,9 @@ var element = document.getElementById('650a6931-9f3a-4edf-92e0-7a719b9fcede');
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Generation 19 completed in 0.00540 minutes
+<pre>Generation 19 completed in 0.00592 minutes
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/gen_20.json
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/pop_20.json
 </pre>
 </div>
 </div>
@@ -2526,12 +2652,12 @@ var element = document.getElementById('650a6931-9f3a-4edf-92e0-7a719b9fcede');
 
 
 
-<div id="eb709969-a0fa-452c-a6fb-b4cdd5e8bc79" class="jupyter-widgets jp-OutputArea-output ">
+<div id="603a0c3d-b062-4454-bd2b-fe729a6a638e" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('eb709969-a0fa-452c-a6fb-b4cdd5e8bc79');
+var element = document.getElementById('603a0c3d-b062-4454-bd2b-fe729a6a638e');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "ae0b3dd97bad45b69bb6c1afb9e3fe41", "version_major": 2, "version_minor": 0}
+{"model_id": "1749c7bbbe0f4aea9db9bc7ed732daa3", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -2544,7 +2670,9 @@ var element = document.getElementById('eb709969-a0fa-452c-a6fb-b4cdd5e8bc79');
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Generation 20 completed in 0.00585 minutes
+<pre>Generation 20 completed in 0.00530 minutes
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/gen_21.json
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/pop_21.json
 </pre>
 </div>
 </div>
@@ -2560,12 +2688,12 @@ var element = document.getElementById('eb709969-a0fa-452c-a6fb-b4cdd5e8bc79');
 
 
 
-<div id="cc695195-62a0-4f5f-ab05-cac48cb38d6c" class="jupyter-widgets jp-OutputArea-output ">
+<div id="21b29a8e-70f7-441f-89b6-251a443e8e35" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('cc695195-62a0-4f5f-ab05-cac48cb38d6c');
+var element = document.getElementById('21b29a8e-70f7-441f-89b6-251a443e8e35');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "4e074b70cbac4befa348f1be3ccc83cf", "version_major": 2, "version_minor": 0}
+{"model_id": "472f97eadf4b4a6eaf144bea2ebfe8bd", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -2578,7 +2706,9 @@ var element = document.getElementById('cc695195-62a0-4f5f-ab05-cac48cb38d6c');
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Generation 21 completed in 0.00584 minutes
+<pre>Generation 21 completed in 0.00573 minutes
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/gen_22.json
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/pop_22.json
 </pre>
 </div>
 </div>
@@ -2594,12 +2724,12 @@ var element = document.getElementById('cc695195-62a0-4f5f-ab05-cac48cb38d6c');
 
 
 
-<div id="6f804827-0ccd-47dd-9352-a36a492d10fc" class="jupyter-widgets jp-OutputArea-output ">
+<div id="322c7249-8193-461d-873c-f98d0d174a5c" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('6f804827-0ccd-47dd-9352-a36a492d10fc');
+var element = document.getElementById('322c7249-8193-461d-873c-f98d0d174a5c');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "4d16ac00d64a49cd8fb192ab2d89e8e8", "version_major": 2, "version_minor": 0}
+{"model_id": "950b223e82d0461e8079cb263b4b4e4c", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -2612,7 +2742,9 @@ var element = document.getElementById('6f804827-0ccd-47dd-9352-a36a492d10fc');
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Generation 22 completed in 0.00537 minutes
+<pre>Generation 22 completed in 0.00664 minutes
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/gen_23.json
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/pop_23.json
 </pre>
 </div>
 </div>
@@ -2628,12 +2760,12 @@ var element = document.getElementById('6f804827-0ccd-47dd-9352-a36a492d10fc');
 
 
 
-<div id="3b1dcebe-9a2d-4583-aa89-8c9e1943f4d2" class="jupyter-widgets jp-OutputArea-output ">
+<div id="82a145e9-f700-4506-8e69-d1fcd805b5cd" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('3b1dcebe-9a2d-4583-aa89-8c9e1943f4d2');
+var element = document.getElementById('82a145e9-f700-4506-8e69-d1fcd805b5cd');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "fd9becd0d14f4c579586aeec5f050299", "version_major": 2, "version_minor": 0}
+{"model_id": "3777efdb65904a429c1b03d73496e481", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -2646,7 +2778,9 @@ var element = document.getElementById('3b1dcebe-9a2d-4583-aa89-8c9e1943f4d2');
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Generation 23 completed in 0.00517 minutes
+<pre>Generation 23 completed in 0.00605 minutes
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/gen_24.json
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/pop_24.json
 </pre>
 </div>
 </div>
@@ -2662,12 +2796,12 @@ var element = document.getElementById('3b1dcebe-9a2d-4583-aa89-8c9e1943f4d2');
 
 
 
-<div id="d4b3c86d-a9e0-4f9e-802c-2ecf018b4db5" class="jupyter-widgets jp-OutputArea-output ">
+<div id="17a92da7-cf1d-46ed-b55a-7c8f1d121f06" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('d4b3c86d-a9e0-4f9e-802c-2ecf018b4db5');
+var element = document.getElementById('17a92da7-cf1d-46ed-b55a-7c8f1d121f06');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "5ddd92450a7c4b619ca48662f8aa4072", "version_major": 2, "version_minor": 0}
+{"model_id": "3c868285bb8a49e0b5333e22e28398ca", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -2680,7 +2814,9 @@ var element = document.getElementById('d4b3c86d-a9e0-4f9e-802c-2ecf018b4db5');
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Generation 24 completed in 0.00490 minutes
+<pre>Generation 24 completed in 0.00609 minutes
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/gen_25.json
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/pop_25.json
 </pre>
 </div>
 </div>
@@ -2696,12 +2832,12 @@ var element = document.getElementById('d4b3c86d-a9e0-4f9e-802c-2ecf018b4db5');
 
 
 
-<div id="50220fdd-72db-434f-9ec0-a89ca0c7cd59" class="jupyter-widgets jp-OutputArea-output ">
+<div id="8e15e162-768f-4b76-abc0-b332f9155290" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('50220fdd-72db-434f-9ec0-a89ca0c7cd59');
+var element = document.getElementById('8e15e162-768f-4b76-abc0-b332f9155290');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "e2ef8f1a954d41d58741db8e31f1d827", "version_major": 2, "version_minor": 0}
+{"model_id": "94767a5fdaa749ccb3c87edaa538e742", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -2714,7 +2850,9 @@ var element = document.getElementById('50220fdd-72db-434f-9ec0-a89ca0c7cd59');
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Generation 25 completed in 0.00506 minutes
+<pre>Generation 25 completed in 0.00576 minutes
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/gen_26.json
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/pop_26.json
 </pre>
 </div>
 </div>
@@ -2730,12 +2868,12 @@ var element = document.getElementById('50220fdd-72db-434f-9ec0-a89ca0c7cd59');
 
 
 
-<div id="98a1a462-33d2-4a40-87ca-cdfcdeeccc2d" class="jupyter-widgets jp-OutputArea-output ">
+<div id="ae22cc4a-d169-45d2-8fc3-11e575051527" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('98a1a462-33d2-4a40-87ca-cdfcdeeccc2d');
+var element = document.getElementById('ae22cc4a-d169-45d2-8fc3-11e575051527');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "b987a0e4b7304a0cadcde56c872f938b", "version_major": 2, "version_minor": 0}
+{"model_id": "8af5302a932b40d289f2c2c589a52119", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -2748,7 +2886,9 @@ var element = document.getElementById('98a1a462-33d2-4a40-87ca-cdfcdeeccc2d');
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Generation 26 completed in 0.00499 minutes
+<pre>Generation 26 completed in 0.00578 minutes
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/gen_27.json
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/pop_27.json
 </pre>
 </div>
 </div>
@@ -2764,12 +2904,12 @@ var element = document.getElementById('98a1a462-33d2-4a40-87ca-cdfcdeeccc2d');
 
 
 
-<div id="abfa6970-bc6f-457c-8138-53b571087850" class="jupyter-widgets jp-OutputArea-output ">
+<div id="6a60ae0e-3618-467c-8c67-7e1460b6c800" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('abfa6970-bc6f-457c-8138-53b571087850');
+var element = document.getElementById('6a60ae0e-3618-467c-8c67-7e1460b6c800');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "dfbe34cb61dd46c6a95bede43b30839a", "version_major": 2, "version_minor": 0}
+{"model_id": "103a3b7770a64269918120ec9bdd8fba", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -2782,7 +2922,9 @@ var element = document.getElementById('abfa6970-bc6f-457c-8138-53b571087850');
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Generation 27 completed in 0.00504 minutes
+<pre>Generation 27 completed in 0.00570 minutes
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/gen_28.json
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/pop_28.json
 </pre>
 </div>
 </div>
@@ -2798,12 +2940,12 @@ var element = document.getElementById('abfa6970-bc6f-457c-8138-53b571087850');
 
 
 
-<div id="fc41f9e9-1b66-4a1d-8548-b1f2bfd14209" class="jupyter-widgets jp-OutputArea-output ">
+<div id="54e0ce92-c7f3-4539-9fe0-5c238191f39d" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('fc41f9e9-1b66-4a1d-8548-b1f2bfd14209');
+var element = document.getElementById('54e0ce92-c7f3-4539-9fe0-5c238191f39d');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "e52dc5462fd14336889a6d170573be89", "version_major": 2, "version_minor": 0}
+{"model_id": "7074af131e7b429a9ba56a8ab15c99c0", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -2816,7 +2958,9 @@ var element = document.getElementById('fc41f9e9-1b66-4a1d-8548-b1f2bfd14209');
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Generation 28 completed in 0.00497 minutes
+<pre>Generation 28 completed in 0.00592 minutes
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/gen_29.json
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/pop_29.json
 </pre>
 </div>
 </div>
@@ -2832,12 +2976,12 @@ var element = document.getElementById('fc41f9e9-1b66-4a1d-8548-b1f2bfd14209');
 
 
 
-<div id="af1d8610-af3a-438d-b624-46d5d0a4848a" class="jupyter-widgets jp-OutputArea-output ">
+<div id="094cf3a5-561e-4e61-8353-1f0458f9f49d" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('af1d8610-af3a-438d-b624-46d5d0a4848a');
+var element = document.getElementById('094cf3a5-561e-4e61-8353-1f0458f9f49d');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "28e3dadf75124792a083140452c96037", "version_major": 2, "version_minor": 0}
+{"model_id": "d9899350f3494e91bc0e4124e3c2b1fc", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -2850,7 +2994,9 @@ var element = document.getElementById('af1d8610-af3a-438d-b624-46d5d0a4848a');
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Generation 29 completed in 0.00491 minutes
+<pre>Generation 29 completed in 0.00613 minutes
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/gen_30.json
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/pop_30.json
 </pre>
 </div>
 </div>
@@ -2866,12 +3012,12 @@ var element = document.getElementById('af1d8610-af3a-438d-b624-46d5d0a4848a');
 
 
 
-<div id="7429d4ad-2e0f-4f02-89fd-dce96563e205" class="jupyter-widgets jp-OutputArea-output ">
+<div id="00eaaa59-1f75-425e-ae36-620ba50d2c29" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('7429d4ad-2e0f-4f02-89fd-dce96563e205');
+var element = document.getElementById('00eaaa59-1f75-425e-ae36-620ba50d2c29');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "8e51c29abb024a59a1bb70ccde701895", "version_major": 2, "version_minor": 0}
+{"model_id": "6859a7ff66854b4ebeee933e650b37ed", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -2884,7 +3030,9 @@ var element = document.getElementById('7429d4ad-2e0f-4f02-89fd-dce96563e205');
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Generation 30 completed in 0.00479 minutes
+<pre>Generation 30 completed in 0.00605 minutes
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/gen_31.json
+Pop written to  /Users/chrisonian/Code/GitHub/xopt/examples/basic/temp/pop_31.json
 </pre>
 </div>
 </div>
@@ -2903,11 +3051,11 @@ var element = document.getElementById('7429d4ad-2e0f-4f02-89fd-dce96563e205');
 <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-11">
+            <clipboard-copy for="cell-13">
             <div>
                 <span class="notice" hidden>Copied!</span>
                 <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
@@ -2917,11 +3065,11 @@ var element = document.getElementById('7429d4ad-2e0f-4f02-89fd-dce96563e205');
             </clipboard-copy>
         </div>
         <div class="CodeMirror cm-s-jupyter">
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># X.save(&#39;test.json&#39;)</span>
-<span class="c1"># !mpirun -n 4 python -m mpi4py.futures -m xopt.mpi.run -vv --logfile xopt.log test.json</span>
+            <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1">#X.save(&#39;test.json&#39;)</span>
+<span class="c1">#!mpirun -n 4 python -m mpi4py.futures -m xopt.mpi.run -vv --logfile xopt.log test.json</span>
 </pre></div>
-<div id="cell-11" class="clipboard-copy-txt"># X.save('test.json')
-# !mpirun -n 4 python -m mpi4py.futures -m xopt.mpi.run -vv --logfile xopt.log test.json </div>
+<div id="cell-13" class="clipboard-copy-txt">#X.save('test.json')
+#!mpirun -n 4 python -m mpi4py.futures -m xopt.mpi.run -vv --logfile xopt.log test.json </div>
     
         </div>
     </div>
@@ -2939,11 +3087,11 @@ var element = document.getElementById('7429d4ad-2e0f-4f02-89fd-dce96563e205');
 <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-12">
+            <clipboard-copy for="cell-14">
             <div>
                 <span class="notice" hidden>Copied!</span>
                 <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
@@ -2965,14 +3113,12 @@ var element = document.getElementById('7429d4ad-2e0f-4f02-89fd-dce96563e205');
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
-<span class="c1">#ax.set_xlim(X_RANGE)</span>
-<span class="c1">#ax.set_ylim(Y_RANGE)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">key1</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">key2</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
-<span class="c1">#ax.set_title(NAME)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">simulation</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
 </pre></div>
-<div id="cell-12" class="clipboard-copy-txt"># Extract objectives from output
+<div id="cell-14" class="clipboard-copy-txt"># Extract objectives from output
 key1, key2 = list(X.vocs['objectives'])
 
 x = [o[key1] for o in X.results['outputs']]
@@ -2984,12 +3130,10 @@ import matplotlib.pyplot as plt
 fig, ax = plt.subplots(figsize=(5,5))
 
 ax.scatter(x, y, color='blue')
-#ax.set_xlim(X_RANGE)
-#ax.set_ylim(Y_RANGE)
 ax.set_xlabel(key1)
 ax.set_ylabel(key2)
 ax.set_aspect('auto')
-#ax.set_title(NAME)</div>
+ax.set_title(X.simulation['name'])</div>
     
         </div>
     </div>
@@ -3005,13 +3149,27 @@ ax.set_aspect('auto')
 <div class="jp-OutputArea-child">
 
     
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[14]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>Text(0.5, 1.0, &#39;test_TNK&#39;)</pre>
+</div>
+
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
 
 
 <div class="jp-RenderedImage jp-OutputArea-output ">
-<img src="data:image/png;base64,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
+<img src="data:image/png;base64,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
 "
 >
 </div>
@@ -3020,6 +3178,37 @@ ax.set_aspect('auto')
 
 </div>
 
+</div>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+        
+        
+        <div class="zeroclipboard-container">
+            <clipboard-copy for="cell-15">
+            <div>
+                <span class="notice" hidden>Copied!</span>
+                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
+                    <path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
+                </svg>
+                </div>
+            </clipboard-copy>
+        </div>
+        <div class="CodeMirror cm-s-jupyter">
+            <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Cleanup</span>
+<span class="err">!</span><span class="n">rm</span> <span class="o">-</span><span class="n">r</span> <span class="n">temp</span>
+</pre></div>
+<div id="cell-15" class="clipboard-copy-txt"># Cleanup
+!rm -r temp</div>
+    
+        </div>
+    </div>
+
+</div>
 </div>
 
 </div>
