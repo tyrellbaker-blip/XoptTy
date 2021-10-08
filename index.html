@@ -484,18 +484,20 @@
 simulations/control systems with minimal required coding. Users can easily connect 
 arbitrary evaluation functions to advanced algorithms with minimal coding with 
 support for multi-threaded or MPI-enabled execution.</p>
-<p>Currenty <strong>Xopt</strong> provides:
-- optimization algorithms:
-  - <code>cnsga</code> Continuous NSGA-II with constraints.
-  - <code>bayesian_optimization</code> Single objective Bayesian optimization (w/ or w/o constraints, serial or parallel).
-  - <code>mobo</code> Multi-objective Bayesian optimization (w/ or w/o constraints, serial or parallel).
-  - <code>bayesian_exploration</code> Bayesian exploration.
-  - <code>multi_fidelity</code> Multi-fidelity Single objective Bayesian optimization.
-- sampling algorithms:
-  - <code>random sampler</code>
-- Convenient YAML/JSON based input format.
-- Driver programs:
-  - <code>xopt.mpi.run</code> Parallel MPI execution using this input format.</p>
+<p>Currenty <strong>Xopt</strong> provides:</p>
+<ul>
+<li>optimization algorithms:</li>
+<li><code>cnsga</code> Continuous NSGA-II with constraints.</li>
+<li><code>bayesian_optimization</code> Single objective Bayesian optimization (w/ or w/o constraints, serial or parallel).</li>
+<li><code>mobo</code> Multi-objective Bayesian optimization (w/ or w/o constraints, serial or parallel).</li>
+<li><code>bayesian_exploration</code> Bayesian exploration.</li>
+<li><code>multi_fidelity</code> Multi-fidelity Single objective Bayesian optimization.</li>
+<li>sampling algorithms:</li>
+<li><code>random sampler</code></li>
+<li>Convenient YAML/JSON based input format.</li>
+<li>Driver programs:</li>
+<li><code>xopt.mpi.run</code> Parallel MPI execution using this input format.</li>
+</ul>
 <p><strong>Xopt</strong> does <strong>not</strong> provide: 
 - your custom simulation via an <code>evaluate</code> function.</p>
 <p>Rather, <strong>Xopt</strong> asks you to define this function </p>
