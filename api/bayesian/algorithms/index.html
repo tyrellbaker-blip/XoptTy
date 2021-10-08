@@ -10,7 +10,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.1">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.2">
     
     
       
@@ -18,7 +18,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.1c75ef36.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.24c991ad.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
@@ -597,6 +597,12 @@
     <div class="doc doc-contents ">
 
       <p>Bayesian Exploration</p>
+<p>This optimization algorithm attempts to efficiently characterize a target
+function by sampling points that maximize model uncertainty. By combining this
+acquisition function with a Gaussian process model that uses automatic relevance
+determination (ARD) we increase the number of samples along the fastest changing
+axis of the function. Natively incorperates inequality constraints.</p>
+<p>See https://www.nature.com/articles/s41467-021-25757-3 for detials.</p>
 
 <p><strong>Parameters:</strong></p>
 <table>
@@ -655,6 +661,14 @@
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bayesian_exploration</span><span class="p">(</span><span class="n">vocs</span><span class="p">,</span> <span class="n">evaluate_f</span><span class="p">,</span> <span class="n">n_steps</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_initial_samples</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Bayesian Exploration</span>
+
+<span class="sd">    This optimization algorithm attempts to efficiently characterize a target</span>
+<span class="sd">    function by sampling points that maximize model uncertainty. By combining this</span>
+<span class="sd">    acquisition function with a Gaussian process model that uses automatic relevance</span>
+<span class="sd">    determination (ARD) we increase the number of samples along the fastest changing</span>
+<span class="sd">    axis of the function. Natively incorperates inequality constraints.</span>
+
+<span class="sd">    See https://www.nature.com/articles/s41467-021-25757-3 for detials.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -719,6 +733,10 @@
     <div class="doc doc-contents ">
 
       <p>Bayesian optimization</p>
+<p>Bayesian optimization with an arbitrary acquisition function. Required to pass a
+generator_options dict with the keyword <code>acquisition_function</code> that points to a
+valid botorch.acquisition.AcquisitionFunction object or a callable that returns
+an object of that type, see examples/bayes_opt.</p>
 
 <p><strong>Parameters:</strong></p>
 <table>
@@ -779,6 +797,11 @@ overwritten by initial_x</p></td>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bayesian_optimize</span><span class="p">(</span><span class="n">vocs</span><span class="p">,</span> <span class="n">evaluate_f</span><span class="p">,</span> <span class="n">n_steps</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_initial_samples</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Bayesian optimization</span>
+
+<span class="sd">    Bayesian optimization with an arbitrary acquisition function. Required to pass a</span>
+<span class="sd">    generator_options dict with the keyword `acquisition_function` that points to a</span>
+<span class="sd">    valid botorch.acquisition.AcquisitionFunction object or a callable that returns</span>
+<span class="sd">    an object of that type, see examples/bayes_opt.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -852,6 +875,15 @@ overwritten by initial_x</p></td>
     <div class="doc doc-contents ">
 
       <p>Multi-objective Bayesian optimization</p>
+<p>This algorithm attempts to determine the Pareto front of a multi-objective
+problem using multi-objective Bayesian optimization. The acquisition function is
+the expected hypervolume improvement (EHVI), implemented in botorch. Allows for
+the specification of unknown constraints and proximal biasing.</p>
+<p>See https://journals.aps.org/prab/abstract/10.1103/PhysRevAccelBeams.24.062801
+and https://botorch.org/tutorials/multi_objective_bo for details.</p>
+<p>Note: while this algorithm can be used with parallel evaluations, optimization of
+the acquistion function can become prohibitively expensive given the number of
+objectives, points on the Pareto front and number of parallelized evaluations.</p>
 
 <p><strong>Parameters:</strong></p>
 <table>
@@ -918,6 +950,18 @@ overwritten by initial_x</p></td>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">mobo</span><span class="p">(</span><span class="n">vocs</span><span class="p">,</span> <span class="n">evaluate_f</span><span class="p">,</span> <span class="n">ref</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_steps</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_initial_samples</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Multi-objective Bayesian optimization</span>
+
+<span class="sd">    This algorithm attempts to determine the Pareto front of a multi-objective</span>
+<span class="sd">    problem using multi-objective Bayesian optimization. The acquisition function is</span>
+<span class="sd">    the expected hypervolume improvement (EHVI), implemented in botorch. Allows for</span>
+<span class="sd">    the specification of unknown constraints and proximal biasing.</span>
+
+<span class="sd">    See https://journals.aps.org/prab/abstract/10.1103/PhysRevAccelBeams.24.062801</span>
+<span class="sd">    and https://botorch.org/tutorials/multi_objective_bo for details.</span>
+
+<span class="sd">    Note: while this algorithm can be used with parallel evaluations, optimization of</span>
+<span class="sd">    the acquistion function can become prohibitively expensive given the number of</span>
+<span class="sd">    objectives, points on the Pareto front and number of parallelized evaluations.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -1225,7 +1269,7 @@ at each step.</p></td>
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.e99e714c.min.js", "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.c7d1b464.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.bc35569b.min.js"></script>
       
     
   </body>
