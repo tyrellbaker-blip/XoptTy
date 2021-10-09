@@ -389,26 +389,14 @@
   
   
   
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_4_2">
-          Bayesian
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Bayesian" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_2">
-          <span class="md-nav__icon md-icon"></span>
-          Bayesian
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+    <li class="md-nav__item">
+      <a href="api/algorithms/bayesian/" class="md-nav__link">
+        Bayesian algorithms
+      </a>
+    </li>
+  
+
+            
           
             
               
@@ -416,16 +404,9 @@
   
   
     <li class="md-nav__item">
-      <a href="api/bayesian/algorithms/" class="md-nav__link">
-        algorithms
+      <a href="api/algorithms/genetic/" class="md-nav__link">
+        Genetic algorithms
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
     </li>
   
 
@@ -486,21 +467,27 @@ arbitrary evaluation functions to advanced algorithms with minimal coding with
 support for multi-threaded or MPI-enabled execution.</p>
 <p>Currenty <strong>Xopt</strong> provides:</p>
 <ul>
-<li>optimization algorithms:</li>
+<li>optimization algorithms:<ul>
 <li><code>cnsga</code> Continuous NSGA-II with constraints.</li>
 <li><code>bayesian_optimization</code> Single objective Bayesian optimization (w/ or w/o constraints, serial or parallel).</li>
 <li><code>mobo</code> Multi-objective Bayesian optimization (w/ or w/o constraints, serial or parallel).</li>
 <li><code>bayesian_exploration</code> Bayesian exploration.</li>
 <li><code>multi_fidelity</code> Multi-fidelity Single objective Bayesian optimization.</li>
-<li>sampling algorithms:</li>
+</ul>
+</li>
+<li>sampling algorithms:<ul>
 <li><code>random sampler</code></li>
+</ul>
+</li>
 <li>Convenient YAML/JSON based input format.</li>
-<li>Driver programs:</li>
+<li>Driver programs:<ul>
 <li><code>xopt.mpi.run</code> Parallel MPI execution using this input format.</li>
+</ul>
+</li>
 </ul>
 <p><strong>Xopt</strong> does <strong>not</strong> provide: 
 - your custom simulation via an <code>evaluate</code> function.</p>
-<p>Rather, <strong>Xopt</strong> asks you to define this function </p>
+<p>Rather, <strong>Xopt</strong> asks you to define this function.</p>
 <h1 id="configuring-an-xopt-run">Configuring an Xopt run</h1>
 <p>Xopt runs are specified via a dictionary that can be directly imported from a YAML file.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">xopt</span><span class="p">:</span> 
@@ -539,7 +526,7 @@ support for multi-threaded or MPI-enabled execution.</p>
 <h1 id="defining-evaluation-function">Defining evaluation function</h1>
 <p>Xopt can interface with arbitrary evaluate functions (defined in Python) with the 
 following form:
-<div class="highlight"><pre><span></span><code>evaluate(params[Dict]) -&gt; Dict
+<div class="highlight"><pre><span></span><code><span class="n">evaluate</span><span class="p">(</span><span class="n">inputs</span><span class="p">:</span> <span class="n">Dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span>
 </code></pre></div>
 Evaluate functions must accept a dictionary object that <strong>at least</strong> has the keys 
 specified in <code>variables, constants, linked_variables</code> and returns a dictionary 
@@ -550,7 +537,6 @@ used in the evaluate function but are not modified by xopt.</p>
 <p>Example MPI run, with <code>xopt.yaml</code> as the only user-defined file:
 <div class="highlight"><pre><span></span><code>mpirun -n 64 python -m mpi4py.futures -m xopt.mpi.run xopt.yaml
 </code></pre></div></p>
-<p>The complete configuration of a simulation optimization is given by a proper YAML file:</p>
                 
               
 
