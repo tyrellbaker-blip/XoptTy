@@ -1005,6 +1005,8 @@ overwritten by initial_x</p></td>
 
     <span class="n">generator_options</span> <span class="o">=</span> <span class="n">options</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;generator_options&quot;</span><span class="p">)</span>
 
+    <span class="n">vocs</span> <span class="o">=</span> <span class="n">VOCS</span><span class="o">.</span><span class="n">parse_obj</span><span class="p">(</span><span class="n">vocs</span><span class="p">)</span>
+
     <span class="n">generator</span> <span class="o">=</span> <span class="n">generators</span><span class="o">.</span><span class="n">mobo</span><span class="o">.</span><span class="n">MOBOGenerator</span><span class="p">(</span><span class="n">vocs</span><span class="p">,</span> <span class="n">ref</span><span class="p">,</span> <span class="o">**</span><span class="n">generator_options</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">optimize</span><span class="p">(</span>
