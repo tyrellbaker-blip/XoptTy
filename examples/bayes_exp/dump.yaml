@@ -1,0 +1,189 @@
+data:
+  a:
+    '1': dummy_constant
+    '10': dummy_constant
+    '2': dummy_constant
+    '3': dummy_constant
+    '4': dummy_constant
+    '5': dummy_constant
+    '6': dummy_constant
+    '7': dummy_constant
+    '8': dummy_constant
+    '9': dummy_constant
+  c1:
+    '1': 13.4805321315
+    '10': 0.1586895907
+    '2': 5.6438540087
+    '3': 2.7282498949
+    '4': 7.8010954689
+    '5': 0.9119177321
+    '6': 0.8962607927
+    '7': -0.822296455
+    '8': 0.2497313195
+    '9': -0.057844519
+  c2:
+    '1': 9.6506286261
+    '10': 0.2497809217
+    '2': 3.9130000068
+    '3': 1.6419761925
+    '4': 5.1743486405
+    '5': 0.5463072309
+    '6': 0.7474346361
+    '7': 0.0818739809
+    '8': 0.1885302129
+    '9': 0.5212953138
+  some_array:
+    '1':
+    - 1
+    - 2
+    - 3
+    '10':
+    - 1
+    - 2
+    - 3
+    '2':
+    - 1
+    - 2
+    - 3
+    '3':
+    - 1
+    - 2
+    - 3
+    '4':
+    - 1
+    - 2
+    - 3
+    '5':
+    - 1
+    - 2
+    - 3
+    '6':
+    - 1
+    - 2
+    - 3
+    '7':
+    - 1
+    - 2
+    - 3
+    '8':
+    - 1
+    - 2
+    - 3
+    '9':
+    - 1
+    - 2
+    - 3
+  x1:
+    '1': 2.5109995471
+    '10': 0.9992327318
+    '2': 2.4506853245
+    '3': 0.8881004063
+    '4': 2.0402813428
+    '5': 1.2241682349
+    '6': 0.2327878659
+    '7': 0.2709035214
+    '8': 0.858674466
+    '9': 1.0208601672
+  x2:
+    '1': 2.8678068856
+    '10': 0.4765991211
+    '2': 0.82836987
+    '3': 1.721210165
+    '4': 2.1738823213
+    '5': 0.6479445789
+    '6': 1.322211841
+    '7': 0.3285684265
+    '8': 0.7447097063
+    '9': 0.0
+  xopt_error:
+    '1': false
+    '10': false
+    '2': false
+    '3': false
+    '4': false
+    '5': false
+    '6': false
+    '7': false
+    '8': false
+    '9': false
+  xopt_error_str:
+    '1': ''
+    '10': ''
+    '2': ''
+    '3': ''
+    '4': ''
+    '5': ''
+    '6': ''
+    '7': ''
+    '8': ''
+    '9': ''
+  y1:
+    '1': 2.5109995471
+    '10': 0.9992327318
+    '2': 2.4506853245
+    '3': 0.8881004063
+    '4': 2.0402813428
+    '5': 1.2241682349
+    '6': 0.2327878659
+    '7': 0.2709035214
+    '8': 0.858674466
+    '9': 1.0208601672
+  y2:
+    '1': 2.8678068856
+    '10': 0.4765991211
+    '2': 0.82836987
+    '3': 1.721210165
+    '4': 2.1738823213
+    '5': 0.6479445789
+    '6': 1.322211841
+    '7': 0.3285684265
+    '8': 0.7447097063
+    '9': 0.0
+evaluator:
+  function: xopt.resources.test_functions.tnk.evaluate_TNK
+  function_kwargs:
+    raise_probability: 0
+    random_sleep: 0
+    sleep: 0
+  max_workers: 1
+generator:
+  acq:
+    monte_carlo_samples: 512
+    proximal_lengthscales:
+    - 1.5
+    - 1.5
+  model:
+    use_conservative_prior_lengthscale: false
+    use_conservative_prior_mean: false
+    use_low_noise_prior: false
+  n_initial: 5
+  name: bayesian_exploration
+  optim:
+    num_restarts: 1
+    raw_samples: 20
+    sequential: true
+vocs:
+  constants:
+    a: dummy_constant
+  constraints:
+    c1:
+    - GREATER_THAN
+    - 0.0
+    c2:
+    - LESS_THAN
+    - 0.5
+  linked_variables: {}
+  objectives:
+    y1: MINIMIZE
+  variables:
+    x1:
+    - 0.0
+    - 3.14159
+    x2:
+    - 0.0
+    - 3.14159
+xopt:
+  asynch: false
+  dump_file: dump.yaml
+  max_evaluations: null
+  strict: false
