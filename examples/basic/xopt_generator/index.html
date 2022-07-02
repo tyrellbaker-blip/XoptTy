@@ -2216,14 +2216,14 @@ for i in range(4):
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>/usr/share/miniconda/envs/xopt-dev/lib/python3.9/site-packages/gpytorch/lazy/lazy_tensor.py:1810: UserWarning: torch.triangular_solve is deprecated in favor of torch.linalg.solve_triangularand will be removed in a future PyTorch release.
+<pre>/usr/share/miniconda/envs/xopt-dev/lib/python3.9/site-packages/gpytorch/utils/cholesky.py:40: NumericalWarning: A not p.d., added jitter of 1.0e-08 to the diagonal
+  warnings.warn(
+/usr/share/miniconda/envs/xopt-dev/lib/python3.9/site-packages/gpytorch/lazy/lazy_tensor.py:1810: UserWarning: torch.triangular_solve is deprecated in favor of torch.linalg.solve_triangularand will be removed in a future PyTorch release.
 torch.linalg.solve_triangular has its arguments reversed and does not return a copy of one of the inputs.
 X = torch.triangular_solve(B, A).solution
 should be replaced with
 X = torch.linalg.solve_triangular(A, B). (Triggered internally at  /home/conda/feedstock_root/build_artifacts/pytorch-recipe_1654951030282/work/aten/src/ATen/native/BatchLinearAlgebra.cpp:1666.)
   Linv = torch.triangular_solve(Eye, L, upper=False).solution
-/usr/share/miniconda/envs/xopt-dev/lib/python3.9/site-packages/gpytorch/utils/cholesky.py:40: NumericalWarning: A not p.d., added jitter of 1.0e-08 to the diagonal
-  warnings.warn(
 /usr/share/miniconda/envs/xopt-dev/lib/python3.9/site-packages/gpytorch/utils/cholesky.py:40: NumericalWarning: A not p.d., added jitter of 1.0e-08 to the diagonal
   warnings.warn(
 </pre>
@@ -2308,29 +2308,29 @@ X = torch.linalg.solve_triangular(A, B). (Triggered internally at  /home/conda/f
   <tbody>
     <tr>
       <th>1</th>
-      <td>3.231829</td>
-      <td>-0.090114</td>
+      <td>1.376533</td>
+      <td>9.811901e-01</td>
       <td>False</td>
       <td></td>
     </tr>
     <tr>
       <th>2</th>
-      <td>5.034336</td>
-      <td>-0.948621</td>
+      <td>6.283185</td>
+      <td>-2.449294e-16</td>
       <td>False</td>
       <td></td>
     </tr>
     <tr>
       <th>3</th>
-      <td>5.585033</td>
-      <td>-0.642803</td>
+      <td>4.256962</td>
+      <td>-8.980734e-01</td>
       <td>False</td>
       <td></td>
     </tr>
     <tr>
       <th>4</th>
-      <td>4.792014</td>
-      <td>-0.996832</td>
+      <td>3.770599</td>
+      <td>-5.883415e-01</td>
       <td>False</td>
       <td></td>
     </tr>
