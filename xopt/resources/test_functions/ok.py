@@ -68,5 +68,3 @@ def evaluate_ok(inputs):
     }
     
     return outputs
-     
-    
