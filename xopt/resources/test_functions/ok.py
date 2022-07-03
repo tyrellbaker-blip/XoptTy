@@ -7,7 +7,7 @@ variables:
     x3: [1, 5]
     x4: [0, 6]
     x5: [1, 5]
-    x6: [0, 10] 
+    x6: [0, 10]
 objectives:
     f1: MINIMIZE
     f2: MINIMIZE
