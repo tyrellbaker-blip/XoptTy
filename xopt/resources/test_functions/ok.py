@@ -23,12 +23,14 @@ constraints:
 ok_vocs = VOCS.from_yaml(ok_vocs_yaml)
 
 def evaluate_ok(inputs):
-    
     """  
     Osyczka Kundu (OK) function
     https://en.wikipedia.org/wiki/Test_functions_for_optimization#cite_note-OsyczkaKundu1995-22
     
-    Osyczka, Andrzej and Sourav Kundu. "A new method to solve generalized multicriteria optimization problems using the simple genetic algorithm."" Structural optimization 10 (1995): 94-99.
+    Osyczka, Andrzej and Sourav Kundu. 
+    "A new method to solve generalized multicriteria optimization problems using
+    the simple genetic algorithm."
+    Structural optimization 10 (1995): 94-99.
     
     variables:
         x1: [0, 10]
@@ -66,5 +68,5 @@ def evaluate_ok(inputs):
         "g5": 4 - (x3-3)**2 - x4,
         "g6": (x5-3)**2 + x6 - 4
     }
-    
+
     return outputs
