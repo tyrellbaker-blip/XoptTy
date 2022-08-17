@@ -9,9 +9,9 @@ Xopt
 ====
 
 
-**`Documentation`** |
-------------------- |
-[![Documentation](https://img.shields.io/badge/Xopt-documentation-blue.svg)](https://ChristopherMayes.github.io/Xopt/index.html)  |
+| **`Documentation`**                                                                                                              |
+|----------------------------------------------------------------------------------------------------------------------------------|
+| [![Documentation](https://img.shields.io/badge/Xopt-documentation-blue.svg)](https://ChristopherMayes.github.io/Xopt/index.html) |
 
 
 
