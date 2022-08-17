@@ -1,13 +1,20 @@
-from xopt.evaluator import Evaluator
-from xopt.base import Xopt
+import pytest
 
+from xopt.base import Xopt
+from xopt.evaluator import Evaluator
 from xopt.generators.bayesian.bayesian_exploration import BayesianExplorationGenerator
+from xopt.generators.bayesian.upper_confidence_bound import UpperConfidenceBoundOptions
 from xopt.resources.testing import TEST_VOCS_BASE, TEST_VOCS_DATA, xtest_callable
 
 
 class TestBayesianExplorationGenerator:
     def test_init(self):
         BayesianExplorationGenerator(TEST_VOCS_BASE)
+
+        with pytest.raises(ValueError):
+            BayesianExplorationGenerator(
+                TEST_VOCS_BASE, UpperConfidenceBoundOptions()
+            )
 
     def test_generate(self):
         gen = BayesianExplorationGenerator(
@@ -33,10 +40,8 @@ class TestBayesianExplorationGenerator:
 
         X = Xopt(generator=gen, evaluator=evaluator, vocs=TEST_VOCS_BASE)
 
-        # initialize with single initial candidate
-        X.step()
-
         # now use bayes opt
+        X.step()
         X.step()
 
     def test_in_xopt_w_proximal(self):

@@ -10,6 +10,10 @@ from xopt.generators.bayesian.objectives import (
     create_mc_objective,
 )
 from xopt.generators.bayesian.options import AcqOptions, BayesianOptions
+from xopt.generators.bayesian.time_dependent import (
+    TDAcqOptions,
+    TimeDependentBayesianGenerator,
+)
 from xopt.vocs import VOCS
 
 
@@ -17,8 +21,16 @@ class UpperConfidenceBoundOptions(AcqOptions):
     beta: float = Field(2.0, description="Beta parameter for UCB optimization")
 
 
+class TDUpperConfidenceBoundOptions(TDAcqOptions):
+    beta: float = Field(2.0, description="Beta parameter for UCB optimization")
+
+
 class UCBOptions(BayesianOptions):
     acq = UpperConfidenceBoundOptions()
+
+
+class TDUCBOptions(UCBOptions):
+    acq = TDUpperConfidenceBoundOptions()
 
 
 class UpperConfidenceBoundGenerator(BayesianGenerator):
@@ -42,7 +54,7 @@ class UpperConfidenceBoundGenerator(BayesianGenerator):
         if vocs.n_objectives != 1:
             raise ValueError("vocs must have one objective for optimization")
 
-        super(UpperConfidenceBoundGenerator, self).__init__(vocs, options)
+        super().__init__(vocs, options)
 
     @staticmethod
     def default_options() -> UCBOptions:
@@ -64,3 +76,16 @@ class UpperConfidenceBoundGenerator(BayesianGenerator):
         )
 
         return cqUCB
+
+
+class TDUpperConfidenceBoundGenerator(
+    TimeDependentBayesianGenerator, UpperConfidenceBoundGenerator
+):
+    alias = "time_dependent_upper_confidence_bound"
+
+    def __init__(self, vocs: VOCS, options: TDUCBOptions = TDUCBOptions()):
+        super(TDUpperConfidenceBoundGenerator, self).__init__(vocs, options)
+
+    @staticmethod
+    def default_options() -> TDUCBOptions:
+        return TDUCBOptions()

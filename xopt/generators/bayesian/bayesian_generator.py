@@ -1,3 +1,4 @@
+import logging
 from abc import ABC, abstractmethod
 from typing import Dict, List
 
@@ -14,13 +15,15 @@ from xopt.generators.bayesian.models.standard import create_standard_model
 from xopt.generators.bayesian.options import BayesianOptions
 from xopt.vocs import VOCS
 
+logger = logging.getLogger()
+
 
 class BayesianGenerator(Generator, ABC):
     def __init__(self, vocs: VOCS, options: BayesianOptions = BayesianOptions()):
         if not isinstance(options, BayesianOptions):
             raise ValueError("options must be of type BayesianOptions")
 
-        super(BayesianGenerator, self).__init__(vocs, options)
+        super().__init__(vocs, options)
 
         self._model = None
         self._acquisition = None
@@ -29,14 +32,18 @@ class BayesianGenerator(Generator, ABC):
 
         self._tkwargs = {"dtype": torch.double, "device": "cpu"}
 
+    @staticmethod
+    def default_options() -> BayesianOptions:
+        return BayesianOptions()
+
     def add_data(self, new_data: pd.DataFrame):
         self.data = pd.concat([self.data, new_data], axis=0)
 
     def generate(self, n_candidates: int) -> List[Dict]:
-
         if n_candidates > 1:
             raise NotImplementedError(
-                "Bayesian algorithms don't support parallel " "candidate generation"
+                "Bayesian algorithms don't currently support parallel candidate "
+                "generation"
             )
 
         # if no data exists use random generator to generate candidates
@@ -44,41 +51,65 @@ class BayesianGenerator(Generator, ABC):
             return self.vocs.random_inputs(self.options.n_initial)
 
         else:
-            bounds = torch.tensor(self.vocs.bounds, **self._tkwargs)
+            bounds = self._get_bounds()
 
             # update internal model with internal data
             self.train_model(self.data)
 
-            # generate starting points for optimization (note in real domain)
-            inputs = self.get_input_data(self.data)
-            batch_initial_points = sample_truncated_normal_perturbations(
-                inputs[-1].unsqueeze(0),
-                n_discrete_points=self.options.optim.raw_samples,
-                sigma=0.5,
-                bounds=bounds,
-            )
+            if self.options.optim.use_nearby_initial_points:
+                # generate starting points for optimization (note in real domain)
+                inputs = self.get_input_data(self.data)
+                batch_initial_points = sample_truncated_normal_perturbations(
+                    inputs[-1].unsqueeze(0),
+                    n_discrete_points=self.options.optim.raw_samples,
+                    sigma=0.5,
+                    bounds=bounds,
+                ).unsqueeze(-2)
+                raw_samples = None
+            else:
+                batch_initial_points = None
+                raw_samples = self.options.optim.raw_samples
+
+            acq_funct = self.get_acquisition(self._model)
 
             # get candidates in real domain
             candidates, out = optimize_acqf(
-                acq_function=self.get_acquisition(self._model),
+                acq_function=acq_funct,
                 bounds=bounds,
                 q=n_candidates,
+                raw_samples=raw_samples,
                 batch_initial_conditions=batch_initial_points,
                 num_restarts=self.options.optim.num_restarts,
             )
-            return self.vocs.convert_numpy_to_inputs(
-                candidates.unsqueeze(0).detach().numpy()
-            )
+            logger.debug("Best candidate from optimize", candidates, out)
+            return self.vocs.convert_numpy_to_inputs(candidates.detach().numpy())
 
-    def train_model(self, data: pd.DataFrame, update_internal=True) -> Module:
+    def train_model(self, data: pd.DataFrame = None, update_internal=True) -> Module:
         """
         Returns a ModelListGP containing independent models for the objectives and
         constraints
 
         """
+        if data is None:
+            data = self.data
+
+        # drop nans
+        valid_data = data[
+            pd.unique(self.vocs.variable_names + self.vocs.output_names)
+        ].dropna()
+
+        # create dataframes for processed data
+        variable_data = self.vocs.variable_data(valid_data, "")
+        objective_data = self.vocs.objective_data(valid_data, "")
+        constraint_data = self.vocs.constraint_data(valid_data, "")
 
         _model = create_standard_model(
-            data, self.vocs, tkwargs=self._tkwargs, **self.options.model.dict()
+            variable_data,
+            objective_data,
+            constraint_data,
+            bounds=self.vocs.bounds,
+            tkwargs=self._tkwargs,
+            **self.options.model.dict(),
         )
 
         if update_internal:
@@ -93,14 +124,16 @@ class BayesianGenerator(Generator, ABC):
         self.sampler = SobolQMCNormalSampler(self.options.acq.monte_carlo_samples)
         self.objective = self._get_objective()
 
+        # get base acquisition function
+        acq = self._get_acquisition(model)
+
         # add proximal biasing if requested
         if self.options.acq.proximal_lengthscales is not None:
             acq = ProximalAcquisitionFunction(
-                self._get_acquisition(model),
+                acq,
                 torch.tensor(self.options.acq.proximal_lengthscales, **self._tkwargs),
+                transformed_weighting=self.options.acq.use_transformed_proximal_weights,
             )
-        else:
-            acq = self._get_acquisition(model)
 
         return acq
 
@@ -124,6 +157,43 @@ class BayesianGenerator(Generator, ABC):
     @property
     def model(self):
         return self._model
+
+    def _get_bounds(self):
+        bounds = torch.tensor(self.vocs.bounds, **self._tkwargs)
+        # if specified modify bounds to limit maximum travel distances
+        if self.options.optim.max_travel_distances is not None:
+            if len(self.options.optim.max_travel_distances) != len(bounds):
+                raise ValueError(
+                    "max_travel_distances must be of length {}".format(len(bounds))
+                )
+
+            # get last point
+            if self.data.empty:
+                raise ValueError(
+                    "No data exists to specify max_travel_distances "
+                    "from, add data first to use during BO"
+                )
+            last_point = torch.tensor(
+                self.data[self.vocs.variable_names].iloc[-1].to_numpy(), **self._tkwargs
+            )
+
+            # bound lengths for normalization
+            lengths = bounds[1, :] - bounds[0, :]
+
+            # get maximum travel distances
+            max_travel_distances = (
+                torch.tensor(self.options.optim.max_travel_distances, **self._tkwargs)
+                * lengths
+            )
+            bounds[0, :] = torch.max(
+                bounds[0, :],
+                last_point - max_travel_distances,
+            )
+            bounds[1, :] = torch.min(
+                bounds[1, :],
+                last_point + max_travel_distances,
+            )
+        return bounds
 
     def _check_options(self, options: BayesianOptions):
         if options.acq.proximal_lengthscales is not None:

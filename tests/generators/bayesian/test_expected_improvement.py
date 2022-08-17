@@ -6,8 +6,8 @@ from xopt.base import Xopt
 
 from xopt.evaluator import Evaluator
 from xopt.generators.bayesian.bayesian_exploration import BayesianExplorationOptions
-from xopt.generators.bayesian.upper_confidence_bound import (
-    UpperConfidenceBoundGenerator,
+from xopt.generators.bayesian.expected_improvement import (
+    ExpectedImprovementGenerator,
 )
 
 from xopt.resources.testing import TEST_VOCS_BASE, TEST_VOCS_DATA, xtest_callable
@@ -15,17 +15,17 @@ from xopt.resources.testing import TEST_VOCS_BASE, TEST_VOCS_DATA, xtest_callabl
 
 class TestUpperConfidenceBoundGenerator:
     def test_init(self):
-        ucb_gen = UpperConfidenceBoundGenerator(TEST_VOCS_BASE)
+        ucb_gen = ExpectedImprovementGenerator(TEST_VOCS_BASE)
         ucb_gen.options.dict()
         ucb_gen.options.schema()
 
         with pytest.raises(ValueError):
-            UpperConfidenceBoundGenerator(
+            ExpectedImprovementGenerator(
                 TEST_VOCS_BASE, BayesianExplorationOptions()
             )
 
     def test_generate(self):
-        gen = UpperConfidenceBoundGenerator(
+        gen = ExpectedImprovementGenerator(
             TEST_VOCS_BASE,
         )
         gen.options.optim.raw_samples = 1
@@ -42,7 +42,7 @@ class TestUpperConfidenceBoundGenerator:
     def test_generate_w_overlapping_objectives_constraints(self):
         test_vocs = deepcopy(TEST_VOCS_BASE)
         test_vocs.constraints = {"y1": ["GREATER_THAN", 0.0]}
-        gen = UpperConfidenceBoundGenerator(
+        gen = ExpectedImprovementGenerator(
             test_vocs,
         )
         gen.options.optim.raw_samples = 1
@@ -55,7 +55,7 @@ class TestUpperConfidenceBoundGenerator:
 
     def test_in_xopt(self):
         evaluator = Evaluator(function=xtest_callable)
-        ucb_gen = UpperConfidenceBoundGenerator(
+        ucb_gen = ExpectedImprovementGenerator(
             TEST_VOCS_BASE,
         )
         ucb_gen.options.optim.raw_samples = 1
@@ -72,7 +72,7 @@ class TestUpperConfidenceBoundGenerator:
 
     def test_in_xopt_w_proximal(self):
         evaluator = Evaluator(function=xtest_callable)
-        ucb_gen = UpperConfidenceBoundGenerator(
+        ucb_gen = ExpectedImprovementGenerator(
             TEST_VOCS_BASE,
         )
         ucb_gen.options.optim.raw_samples = 1
