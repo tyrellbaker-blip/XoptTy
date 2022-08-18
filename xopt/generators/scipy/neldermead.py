@@ -13,6 +13,7 @@ import pandas as pd
 
 from xopt.generator import Generator, GeneratorOptions
 
+
 logger = logging.getLogger(__name__)
 
 
@@ -76,8 +77,8 @@ class ScipyOptimizeGenerator(Generator):
 
     def add_data(self, new_data: pd.DataFrame):
         assert (
-            len(new_data) == 1
-        ), f"length of new_data must be 1, found: {len(new_data)}"
+                len(new_data) == 1
+                ), f"length of new_data must be 1, found: {len(new_data)}"
         res = self.vocs.objective_data(new_data).to_numpy()
         assert shape(res) == (1, 1)
         y = res[0, 0]
@@ -166,7 +167,7 @@ class NelderMeadGenerator(ScipyOptimizeGenerator):
         else:
             sim = None
 
-        self._algorithm = _neldermead_generator(  # adapted from scipy.optimize
+        self._algorithm = _minimize_neldermead(  # adapted from scipy.optimize
             self.func,  # Handled by base class
             self.x0,  # Handled by base class
             adaptive=self.options.adaptive,
@@ -185,37 +186,27 @@ class NelderMeadGenerator(ScipyOptimizeGenerator):
         return dict(zip(self.vocs.variable_names, sim.T))
 
 
-def _neldermead_generator(
-    func,
-    x0,
-    # args=(), callback=None,
-    # maxiter=None, maxfev=None, disp=False,
-    # return_all=False,
-    initial_simplex=None,
-    xatol=1e-4,
-    fatol=1e-4,
-    adaptive=True,
-    bounds=None,
-):
+def _minimize_neldermead(func, x0, args=(), callback=None,
+                         maxiter=None, maxfev=None, disp=False,
+                         return_all=False, initial_simplex=None,
+                         xatol=1e-4, fatol=1e-4, adaptive=False, bounds=None,
+                         **unknown_options):
     """
-    Modification of scipy.optimize._optimize._minimize_neldermead
-    https://github.com/scipy/scipy/blob/4cf21e753cf937d1c6c2d2a0e372fbc1dbbeea81/scipy/optimize/_optimize.py#L635
-
-    `yield x, sim` is inserted before every call to func(x)
-    This converts this function into a generator.
-
-    Original SciPy docstring:
-
     Minimization of scalar function of one or more variables using the
     Nelder-Mead algorithm.
     Options
     -------
+    disp : bool
+        Set to True to print convergence messages.
     maxiter, maxfev : int
         Maximum allowed number of iterations and function evaluations.
         Will default to ``N*200``, where ``N`` is the number of
         variables, if neither `maxiter` or `maxfev` is set. If both
         `maxiter` and `maxfev` are set, minimization will stop at the
         first reached.
+    return_all : bool, optional
+        Set to True to return a list of the best solution at each of the
+        iterations.
     initial_simplex : array_like of shape (N + 1, N)
         Initial simplex. If given, overrides `x0`.
         ``initial_simplex[j,:]`` should contain the coordinates of
@@ -244,6 +235,9 @@ def _neldermead_generator(
        parameters. 2012. Computational Optimization and Applications.
        51:1, pp. 259-277
     """
+
+    maxfun = maxfev
+    retall = return_all
 
     x0 = asfarray(x0).flatten()
 
@@ -319,8 +313,8 @@ def _neldermead_generator(
     while True:
 
         if (
-            np.max(np.ravel(np.abs(sim[1:] - sim[0]))) <= xatol
-            and np.max(np.abs(fsim[0] - fsim[1:])) <= fatol
+                np.max(np.ravel(np.abs(sim[1:] - sim[0]))) <= xatol
+                and np.max(np.abs(fsim[0] - fsim[1:])) <= fatol
         ):
             break
 
